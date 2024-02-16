@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-export const catchupEmails = [
+export const summaryItems = [
   {
     id: uuidv4(),
     sender: "Lucas.I",

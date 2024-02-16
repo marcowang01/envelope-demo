@@ -1,10 +1,13 @@
-import { Card } from "./card";
+import { CalendarCard } from "@/components/calendarCard";
+import { TodoCard } from "@/components/todoCard";
+import { TrackingCard } from "@/components/trackingCard";
+
 export function RightPanel() {
   return (
     <div>
-      Right Panel
-      <Card />
-      <Card />
+      <TodoCard />
+      <CalendarCard />
+      <TrackingCard />
     </div>
   );
 }

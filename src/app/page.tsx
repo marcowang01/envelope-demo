@@ -4,10 +4,10 @@ import { RightPanel } from "@/components/rightPanel";
 export default function Home() {
   return (
     <div className="flex flex-row w-full justify-center grow mt-[50px] gap-[70px]">
-      <div className="w-3/5 border-2">
+      <div className="w-3/5">
         <LeftPanel />
       </div>
-      <div className="w-2/5 border-2">
+      <div className="w-2/5">
         <RightPanel />
       </div>
     </div>

@@ -9,14 +9,14 @@ export function Navbar() {
   };
 
   return (
-    <div className="flex flex-row gap-3">
-      <NavbarItem icon={<HomeIcon />} color={"green-400"} />
+    <div className="flex flex-row gap-3 ">
+      <NavbarItem icon={<HomeIcon />} hoverClass={"hover:text-green-400"} />
       <SearchBar />
-      <NavbarItem text={"newsletter"} color={"rose-400"} />
-      <NavbarItem text={"apartment"} color={"blue-500"} />
-      <NavbarItem text={"job"} color={"pink-500"} />
-      <NavbarItem text={"friends"} color={"yellow-400"} />
-      <NavbarItem icon={<GearIcon />} color={"orange-400"} />
+      <NavbarItem text={"newsletter"} hoverClass={"hover:bg-rose-400"} />
+      <NavbarItem text={"apartment"} hoverClass={"hover:bg-blue-500"} />
+      <NavbarItem text={"job"} hoverClass={"hover:bg-pink-500"} />
+      <NavbarItem text={"friends"} hoverClass={"hover:bg-yellow-400"} />
+      <NavbarItem icon={<GearIcon />} hoverClass={"hover:text-orange-400"} />
     </div>
   );
 }

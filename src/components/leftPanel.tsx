@@ -1,9 +1,9 @@
-import { Card } from "./card";
+import { SummaryCard } from "@/components/summaryCard";
+
 export function LeftPanel() {
   return (
     <div>
-      Left Panel
-      <Card />
+      <SummaryCard />
     </div>
   );
 }

@@ -1,8 +1,31 @@
-export function Card() {
+import clsx from "clsx";
+import { ReactNode } from "react";
+
+export function Card({
+  title,
+  body,
+  colorClass,
+  icon,
+}:{
+  title: string
+  body: ReactNode
+  colorClass: string
+  icon?: ReactNode
+}) {
   return (
-    <div>
-      Title
-      <div>list</div>
+    <div className="w-full">
+      <div className={clsx("text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]", colorClass)}>
+        {icon && (
+          <div className="w-[22px] h-[22px]">
+            {icon}
+          </div>
+        )}
+        {title}
+      </div>
+      <div className="w-full h-[1px] bg-gray-350"/>
+      <div className="w-full mt-[30px] mb-[40px]">
+        {body}
+      </div>
     </div>
   );
 }
