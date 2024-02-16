@@ -13,6 +13,7 @@ function SummaryCardItems() {
             sender={email.sender}
             title={email.title}
             date={email.date}
+            gapClass={"gap-[40px]"}
             actions={["view", "edit"]}
           />
           </div>

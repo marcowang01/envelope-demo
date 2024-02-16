@@ -1,11 +1,25 @@
 import { Card } from "./card";
 import { todos } from "@/data/emails";
 import { PencilIcon } from "@/assets/pencil-icon";
+import { EmailRow } from "./emailRow";
+
 
 function TodoCardItems() {
   return(
-    <div>
-      Todo things
+    <div className="flex flex-col gap-[20px] w-full">
+      {todos.map((email, index) => {
+        return (
+          <div>
+          <EmailRow
+            key={`summary-${index}`}
+            sender={email.sender}
+            title={email.title}
+            gapClass={"gap-[0px]"}
+            actions={["check"]}
+          />
+          </div>
+        )
+      })}
     </div>
   )
 }

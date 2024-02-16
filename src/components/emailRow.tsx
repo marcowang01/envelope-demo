@@ -1,6 +1,7 @@
 import { CheckIcon } from "@/assets/check-icon";
 import { EyeIcon } from "@/assets/eye-icon";
 import { PencilIcon } from "@/assets/pencil-icon";
+import clsx from "clsx";
 
 function formatDate(date: Date): string {
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
@@ -23,17 +24,19 @@ export function EmailRow({
   sender,
   title,
   date,
+  gapClass,
   actions
 } : {
   sender: string
   title: string
   date?: string
+  gapClass: string
   actions: string[]
 }){
   
   return (
-    <div className="italic text-gray-450  flex flex-row gap-[50px] font-xl w-full">
-      <div className="font-bold cursor-pointer hover:text-gray-800 active:text-gray-500">
+    <div className={clsx("italic text-gray-450  flex flex-row font-xl w-full", gapClass)}>
+      <div className="font-bold cursor-pointer hover:text-gray-800 active:text-gray-500 w-[85px]">
         {sender}
       </div>
       <div className="grow flex flex-row justify-between items-center  hover:text-gray-800  active:text-gray-500  cursor-pointer">
