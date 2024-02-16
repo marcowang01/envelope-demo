@@ -9,15 +9,13 @@ function TodoCardItems() {
     <div className="flex flex-col gap-[20px] w-full">
       {todos.map((email, index) => {
         return (
-          <div>
           <EmailRow
-            key={`summary-${index}`}
+            key={`todo-${index}`}
             sender={email.sender}
             title={email.title}
             gapClass={"gap-[0px]"}
             actions={["check"]}
           />
-          </div>
         )
       })}
     </div>

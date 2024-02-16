@@ -7,7 +7,6 @@ function SummaryCardItems() {
     <div className="flex flex-col gap-[20px] w-full">
       {summaryItems.map((email, index) => {
         return (
-          <div>
           <EmailRow
             key={`summary-${index}`}
             sender={email.sender}
@@ -16,7 +15,6 @@ function SummaryCardItems() {
             gapClass={"gap-[40px]"}
             actions={["view", "edit"]}
           />
-          </div>
         )
       })}
     </div>
