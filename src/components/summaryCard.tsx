@@ -1,10 +1,23 @@
 import { Card } from "./card";
 import { summaryItems } from "@/data/emails";
+import { EmailRow } from "./emailRow";
 
 function SummaryCardItems() {
   return(
-    <div>
-      Summary
+    <div className="flex flex-col gap-[20px] w-full">
+      {summaryItems.map((email, index) => {
+        return (
+          <div>
+          <EmailRow
+            key={`summary-${index}`}
+            sender={email.sender}
+            title={email.title}
+            date={email.date}
+            actions={["view", "edit"]}
+          />
+          </div>
+        )
+      })}
     </div>
   )
 }
