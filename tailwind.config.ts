@@ -32,6 +32,18 @@ const config: Config = {
         red: {
           500: "#F40000",
         },
+        green: {
+          400: "#2DAC00",
+        },
+        rose: {
+          400: "#EF0D4A",
+        },
+        pink: {
+          400: "#F6B2BB",
+        },
+        yellow: {
+          400: "#FEDE02",
+        },
       },
     },
   },

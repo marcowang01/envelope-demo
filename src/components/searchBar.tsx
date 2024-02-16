@@ -2,15 +2,15 @@ import { CmdIcon } from "@/assets/cmd-icon";
 
 export function SearchBar() {
   return (
-    <div className="relative bg-gray-300 opacity-40 p-4 text-gray-500 p-4 rounded-md grow">
+    <div className="group flex items-center bg-gray-300 bg-opacity-40 p-4 rounded-xl grow">
+      <div className="pointer-events-none text-gray-500 group-hover:text-blue-400 group-focus-within:text-blue-400">
+        <CmdIcon />
+      </div>
       <input
         type="text"
         placeholder="Ask me anything..."
-        className="bg-transparent border-none w-full focus:ring-0 placeholder-gray-500"
+        className="bg-transparent border-none w-full placeholder-gray-500 pl-3 focus:outline-none peer text-gray-500 focus:text-gray-500"
       />
-      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-        <CmdIcon />
-      </div>
     </div>
   );
 }
