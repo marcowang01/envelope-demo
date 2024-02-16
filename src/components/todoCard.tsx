@@ -3,9 +3,8 @@ import { todos } from "@/data/emails";
 import { PencilIcon } from "@/assets/pencil-icon";
 import { EmailRow } from "./emailRow";
 
-
 function TodoCardItems() {
-  return(
+  return (
     <div className="flex flex-col gap-[20px] w-full">
       {todos.map((email, index) => {
         return (
@@ -16,10 +15,10 @@ function TodoCardItems() {
             gapClass={"gap-[0px]"}
             actions={["check"]}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 export function TodoCard() {
@@ -30,5 +29,5 @@ export function TodoCard() {
       colorClass="group-hover:text-yellow-400"
       icon={<PencilIcon />}
     />
-  )
+  );
 }

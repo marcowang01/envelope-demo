@@ -14,7 +14,7 @@ export function NavbarItem({
     <div
       className={clsx(
         "bg-gray-300 bg-opacity-40 p-4 text-gray-500 font-normal text-base rounded-xl cursor-pointer transition-all",
-        hoverClass
+        hoverClass,
       )}
     >
       {text?.toLocaleUpperCase()}

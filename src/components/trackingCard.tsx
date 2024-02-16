@@ -3,20 +3,15 @@ import { trackingItems } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
 
 function TrackingCardItems() {
-  return(
-    <div>
-      tracking things
-    </div>
-  )
+  return <div>tracking things</div>;
 }
 
-function LoadingIcon(){
-
+function LoadingIcon() {
   return (
     <div className="group-hover-spin">
       <CIcon />
     </div>
-  )
+  );
 }
 
 export function TrackingCard() {
@@ -27,5 +22,5 @@ export function TrackingCard() {
       colorClass="group-hover:text-blue-500"
       icon={<LoadingIcon />}
     />
-  )
+  );
 }

@@ -3,11 +3,7 @@ import { calendarEvents } from "@/data/emails";
 import { CalendarIcon } from "@/assets/calendar-icon";
 
 function CalendarCardItems() {
-  return(
-    <div>
-      Calendar things
-    </div>
-  )
+  return <div>Calendar things</div>;
 }
 
 export function CalendarCard() {
@@ -18,5 +14,5 @@ export function CalendarCard() {
       colorClass="group-hover:text-red-400"
       icon={<CalendarIcon />}
     />
-  )
+  );
 }

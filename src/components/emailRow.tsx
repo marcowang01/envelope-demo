@@ -4,17 +4,20 @@ import { PencilIcon } from "@/assets/pencil-icon";
 import clsx from "clsx";
 
 function formatDate(date: Date): string {
-  const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+  });
   const formattedDate = formatter.format(date);
 
   const day = date.getDate();
-  let suffix = 'th';
+  let suffix = "th";
   if (day % 10 === 1 && day !== 11) {
-    suffix = 'st';
+    suffix = "st";
   } else if (day % 10 === 2 && day !== 12) {
-    suffix = 'nd';
+    suffix = "nd";
   } else if (day % 10 === 3 && day !== 13) {
-    suffix = 'rd';
+    suffix = "rd";
   }
 
   return formattedDate.replace(/\d+/, `$&${suffix}`);
@@ -25,29 +28,27 @@ export function EmailRow({
   title,
   date,
   gapClass,
-  actions
-} : {
-  sender: string
-  title: string
-  date?: string
-  gapClass: string
-  actions: string[]
-}){
-  
+  actions,
+}: {
+  sender: string;
+  title: string;
+  date?: string;
+  gapClass: string;
+  actions: string[];
+}) {
   return (
-    <div className={clsx("italic text-gray-450  flex flex-row font-xl w-full", gapClass)}>
+    <div
+      className={clsx(
+        "italic text-gray-450  flex flex-row font-xl w-full",
+        gapClass,
+      )}
+    >
       <div className="font-bold cursor-pointer hover:text-gray-800 active:text-gray-500 w-[85px]">
         {sender}
       </div>
       <div className="grow flex flex-row justify-between items-center  hover:text-gray-800  active:text-gray-500  cursor-pointer">
-        <div className="grow ">
-          {title}
-        </div>
-        {date && ( 
-          <div>
-            {formatDate(new Date(date))}
-          </div>
-        )}
+        <div className="grow ">{title}</div>
+        {date && <div>{formatDate(new Date(date))}</div>}
       </div>
 
       <div className="flex flex-row justify-start gap-[20px] items-center ">
@@ -58,19 +59,15 @@ export function EmailRow({
         )}
         {actions.includes("edit") && (
           <div className="cursor-pointer hover:text-gray-800 active:text-gray-500 w-[18px]">
-          <PencilIcon />
+            <PencilIcon />
           </div>
-
         )}
         {actions.includes("check") && (
           <div className="cursor-pointer hover:text-gray-800 active:text-gray-500">
-
-          <CheckIcon />
+            <CheckIcon />
           </div>
-
         )}
       </div>
     </div>
-  )
-
+  );
 }

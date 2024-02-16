@@ -3,7 +3,7 @@ import { summaryItems } from "@/data/emails";
 import { EmailRow } from "./emailRow";
 
 function SummaryCardItems() {
-  return(
+  return (
     <div className="flex flex-col gap-[20px] w-full">
       {summaryItems.map((email, index) => {
         return (
@@ -15,17 +15,12 @@ function SummaryCardItems() {
             gapClass={"gap-[40px]"}
             actions={["view", "edit"]}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 export function SummaryCard() {
-  return (
-    <Card
-      title={"While you were gone..."}
-      body={<SummaryCardItems />}
-    />
-  )
+  return <Card title={"While you were gone..."} body={<SummaryCardItems />} />;
 }
