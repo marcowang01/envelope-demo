@@ -26,7 +26,6 @@ export function SummaryCard() {
     <Card
       title={"While you were gone..."}
       body={<SummaryCardItems />}
-      colorClass="text-gray-500"
     />
   )
 }

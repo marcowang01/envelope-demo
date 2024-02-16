@@ -9,14 +9,14 @@ export function Card({
 }:{
   title: string
   body: ReactNode
-  colorClass: string
+  colorClass?: string
   icon?: ReactNode
 }) {
   return (
     <div className="group w-full">
-      <div className={clsx("text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]", colorClass)}>
+      <div className={clsx("text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px] text-gray-500", colorClass)}>
         {icon && (
-          <div className="w-[22px] h-[22px]">
+          <div className="w-[20px]">
             {icon}
           </div>
         )}

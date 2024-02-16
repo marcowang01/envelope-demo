@@ -10,10 +10,10 @@ function TrackingCardItems() {
   )
 }
 
-function loadingIcon(){
+function LoadingIcon(){
 
   return (
-    <div>
+    <div className="group-hover-spin">
       <CIcon />
     </div>
   )
@@ -25,7 +25,7 @@ export function TrackingCard() {
       title={"Tracking"}
       body={<TrackingCardItems />}
       colorClass="group-hover:text-blue-500"
-      icon={<CIcon />}
+      icon={<LoadingIcon />}
     />
   )
 }

@@ -24,3 +24,16 @@ body {
     text-wrap: balance;
   }
 }
+
+/* In your global CSS file */
+/* In your global CSS file */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Still in your global CSS file */
+.group:hover .group-hover-spin {
+  animation: spin 1s linear infinite;
+}
