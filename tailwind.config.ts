@@ -44,6 +44,9 @@ const config: Config = {
         yellow: {
           400: "#FEDE02",
         },
+        orange: {
+          400: "#F76F23",
+        },
       },
     },
   },

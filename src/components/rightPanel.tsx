@@ -1,4 +1,4 @@
-import { Card } from "./card"
+import { Card } from "./card";
 export function RightPanel() {
   return (
     <div>
@@ -6,5 +6,5 @@ export function RightPanel() {
       <Card />
       <Card />
     </div>
-  )
+  );
 }

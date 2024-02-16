@@ -1,6 +1,5 @@
 import { NavbarItem } from "./navbarItem";
 import { HomeIcon } from "@/assets/home-icon";
-import { CmdIcon } from "@/assets/cmd-icon";
 import { GearIcon } from "@/assets/gear-icon";
 import { SearchBar } from "./searchBar";
 
@@ -17,6 +16,7 @@ export function Navbar() {
       <NavbarItem text={"apartment"} color={"blue-500"} />
       <NavbarItem text={"job"} color={"pink-500"} />
       <NavbarItem text={"friends"} color={"yellow-400"} />
+      <NavbarItem icon={<GearIcon />} color={"orange-400"} />
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className)}>
-        <div className="px-[120px] py-[50px] min-h-screen flex flex-col">
+        <div className="px-[120px] py-[50px] min-h-screen flex flex-col max-w-[1200px] mx-auto">
           <Navbar />
           {children}
         </div>
