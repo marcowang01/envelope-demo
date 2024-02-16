@@ -10,12 +10,21 @@ function TrackingCardItems() {
   )
 }
 
+function loadingIcon(){
+
+  return (
+    <div>
+      <CIcon />
+    </div>
+  )
+}
+
 export function TrackingCard() {
   return (
     <Card
-      title={"To-do"}
+      title={"Tracking"}
       body={<TrackingCardItems />}
-      colorClass="text-blue-500"
+      colorClass="group-hover:text-blue-500"
       icon={<CIcon />}
     />
   )

@@ -15,7 +15,7 @@ export function CalendarCard() {
     <Card
       title={"Calendar"}
       body={<CalendarCardItems />}
-      colorClass="text-red-400"
+      colorClass="group-hover:text-red-400"
       icon={<CalendarIcon />}
     />
   )

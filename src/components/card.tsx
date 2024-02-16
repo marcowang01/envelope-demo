@@ -13,7 +13,7 @@ export function Card({
   icon?: ReactNode
 }) {
   return (
-    <div className="w-full">
+    <div className="group w-full">
       <div className={clsx("text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]", colorClass)}>
         {icon && (
           <div className="w-[22px] h-[22px]">

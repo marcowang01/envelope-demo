@@ -27,7 +27,7 @@ export function TodoCard() {
     <Card
       title={"To-do"}
       body={<TodoCardItems />}
-      colorClass="text-yellow-400"
+      colorClass="group-hover:text-yellow-400"
       icon={<PencilIcon />}
     />
   )
