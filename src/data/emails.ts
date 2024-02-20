@@ -71,24 +71,28 @@ export const calendarEvents = [
     id: uuidv4(),
     sender: "Rabbit.I",
     event: "rabbit <> Gary",
+    label: "3:30 pm",
     time: "2024-02-02T15:30:00.000Z", // Assuming current date is 2024-02-02
   },
   {
     id: uuidv4(),
     sender: "Rabbit.I",
     event: "team all hands",
+    label: "5:00 pm",
     time: "2024-02-02T17:00:00.000Z", // Assuming the same date for simplicity
   },
   {
     id: uuidv4(),
     sender: "Northwestern.U",
     event: "thesis meeting",
+    label: "tomorrow 7:00 am",
     time: "2024-02-03T07:00:00.000Z", // The next day
   },
   {
     id: uuidv4(),
     sender: "United.A",
     event: "flight to SF",
+    label: "in 5 days",
     time: "2024-02-07T15:00:00.000Z", // In 5 days from the assumed date
   },
 ];
@@ -97,7 +101,7 @@ export const trackingItems = [
   {
     id: uuidv4(),
     item: "mattress",
-    status: "delivered",
+    status: "delivered 2 days ago",
     date: "2024-01-31T15:00:00.000Z", // 2 days ago from the assumed current date
   },
   {
