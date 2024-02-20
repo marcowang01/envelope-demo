@@ -7,14 +7,10 @@ function TrackingCardItems() {
   return (
     <div className="flex flex-col gap-4 justify start mt-[20px]">
       {trackingItems.map((item) => (
-        <SimpleRow 
-          key={item.id}
-          title={item.item}
-          label={item.status}
-        />
+        <SimpleRow key={item.id} title={item.item} label={item.status} />
       ))}
     </div>
-  )
+  );
 }
 
 function LoadingIcon() {

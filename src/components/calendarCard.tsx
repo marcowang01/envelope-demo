@@ -7,14 +7,10 @@ function CalendarCardItems() {
   return (
     <div className="flex flex-col gap-4 justify start mt-[20px]">
       {calendarEvents.map((event) => (
-        <SimpleRow 
-          key={event.id}
-          title={event.event}
-          label={event.label}
-        />
+        <SimpleRow key={event.id} title={event.event} label={event.label} />
       ))}
     </div>
-  )
+  );
 }
 
 export function CalendarCard() {
