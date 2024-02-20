@@ -13,3 +13,9 @@ export default function Home() {
     </div>
   );
 }
+
+
+// todo:
+// - add dragg drop
+// - use vh + ratio instead of absolute heights for the three panel
+//    - but always keep 4:3:2 ratio and also have exact row heights
