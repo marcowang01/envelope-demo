@@ -5,7 +5,7 @@ import { EmailRow } from "./emailRow";
 
 function TodoCardItems() {
   return (
-    <div className="flex flex-col gap-[20px] w-full">
+    <div className="flex flex-col gap-[20px] w-full mt-[20px]">
       {todos.map((email, index) => {
         return (
           <EmailRow

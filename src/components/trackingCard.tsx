@@ -1,9 +1,20 @@
 import { Card } from "./card";
 import { trackingItems } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
+import { SimpleRow } from "./simpleRow";
 
 function TrackingCardItems() {
-  return <div>tracking things</div>;
+  return (
+    <div className="flex flex-col gap-4 justify start mt-[20px]">
+      {trackingItems.map((item) => (
+        <SimpleRow 
+          key={item.id}
+          title={item.item}
+          label={item.status}
+        />
+      ))}
+    </div>
+  )
 }
 
 function LoadingIcon() {

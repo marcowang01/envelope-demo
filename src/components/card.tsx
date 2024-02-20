@@ -24,7 +24,7 @@ export function Card({
         {title}
       </div>
       <div className="w-full h-[1px] bg-gray-350" />
-      <div className="w-full mt-[30px] mb-[40px]">{body}</div>
+      <div className="w-full mb-[40px]">{body}</div>
     </div>
   );
 }

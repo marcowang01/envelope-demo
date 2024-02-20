@@ -4,7 +4,7 @@ import { EmailRow } from "./emailRow";
 
 function SummaryCardItems() {
   return (
-    <div className="flex flex-col gap-[20px] w-full">
+    <div className="flex flex-col gap-[20px] w-full mt-[20px]">
       {summaryItems.map((email, index) => {
         return (
           <EmailRow
