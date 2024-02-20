@@ -2,10 +2,19 @@ import { Card } from "./card";
 import { trackingItems } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
 import { SimpleRow } from "./simpleRow";
+import clsx from "clsx";
 
 function TrackingCardItems() {
   return (
-    <div className="flex flex-col gap-4 justify start mt-[20px]">
+    // 120 is exactly 3 rows of 40px
+    <div
+      className={clsx(
+        "flex flex-col gap-[16px] justify start mt-[20px] h-[120px] overflow-y-auto",
+        {
+          "pr-[8px]": trackingItems.length > 3,
+        },
+      )}
+    >
       {trackingItems.map((item) => (
         <SimpleRow key={item.id} title={item.item} label={item.status} />
       ))}

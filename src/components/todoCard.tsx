@@ -2,10 +2,19 @@ import { Card } from "./card";
 import { todos } from "@/data/emails";
 import { PencilIcon } from "@/assets/pencil-icon";
 import { EmailRow } from "./emailRow";
+import clsx from "clsx";
 
 function TodoCardItems() {
   return (
-    <div className="flex flex-col gap-[20px] w-full mt-[20px]">
+    // 176 is exactly 4 rows of 44px
+    <div
+      className={clsx(
+        "flex flex-col gap-[20px] justify start mt-[30px] h-[176px] overflow-y-auto",
+        {
+          "pr-[8px]": todos.length > 4,
+        },
+      )}
+    >
       {todos.map((email, index) => {
         return (
           <EmailRow

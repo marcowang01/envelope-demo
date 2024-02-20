@@ -37,3 +37,24 @@ body {
 .group:hover .group-hover-spin {
   animation: spin 1s linear infinite;
 }
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
