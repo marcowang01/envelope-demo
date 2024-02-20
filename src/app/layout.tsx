@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "AI-first email",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
