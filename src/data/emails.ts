@@ -8,6 +8,7 @@ export const summaryItems = [
     date: "2024-01-31T15:00:00.000Z",
     seen: false,
     checked: false,
+    active: true,
   },
   {
     id: uuidv4(),
@@ -16,6 +17,7 @@ export const summaryItems = [
     date: "2024-01-31T15:00:00.000Z",
     seen: false,
     checked: false,
+    active: true,
   },
   {
     id: uuidv4(),
@@ -24,6 +26,7 @@ export const summaryItems = [
     date: "2024-01-29T15:00:00.000Z",
     seen: false,
     checked: false,
+    active: true,
   },
   {
     id: uuidv4(),
@@ -32,6 +35,7 @@ export const summaryItems = [
     date: "2024-01-29T15:00:00.000Z",
     seen: false,
     checked: false,
+    active: true,
   },
 ];
 
@@ -41,28 +45,32 @@ export const todos = [
     sender: "Jim.W",
     title: "you might find this interesting",
     date: "2024-01-31T15:00:00.000Z",
-    completed: true,
+    completed: false,
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "Elisa.V",
     title: "missing meeting today",
     date: "2024-01-30T15:00:00.000Z",
-    completed: true,
+    completed: false,
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "Lilith.Y",
     title: "clock pcb",
     date: "2024-01-30T15:00:00.000Z",
-    completed: true,
+    completed: false,
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "Marco.W",
     title: "can I merge?",
     date: "2024-01-29T15:00:00.000Z",
-    completed: true,
+    completed: false,
+    active: true,
   },
 ];
 
@@ -72,28 +80,32 @@ export const calendarEvents = [
     sender: "Rabbit.I",
     event: "rabbit <> Gary",
     label: "3:30 pm",
-    time: "2024-02-02T15:30:00.000Z", // Assuming current date is 2024-02-02
+    date: "2024-02-02T15:30:00.000Z", // Assuming current date is 2024-02-02
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "Rabbit.I",
     event: "team all hands",
     label: "5:00 pm",
-    time: "2024-02-02T17:00:00.000Z", // Assuming the same date for simplicity
+    date: "2024-02-02T17:00:00.000Z", // Assuming the same date for simplicity\
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "Northwestern.U",
     event: "thesis meeting",
     label: "tomorrow 7:00 am",
-    time: "2024-02-03T07:00:00.000Z", // The next day
+    date: "2024-02-03T07:00:00.000Z", // The next day
+    active: true,
   },
   {
     id: uuidv4(),
     sender: "United.A",
     event: "flight to SF",
     label: "in 5 days",
-    time: "2024-02-07T15:00:00.000Z", // In 5 days from the assumed date
+    date: "2024-02-07T15:00:00.000Z", // In 5 days from the assumed date
+    active: true,
   },
 ];
 
@@ -103,17 +115,20 @@ export const trackingItems = [
     item: "mattress",
     status: "delivered 2 days ago",
     date: "2024-01-31T15:00:00.000Z", // 2 days ago from the assumed current date
+    active: true,
   },
   {
     id: uuidv4(),
     item: "shampoo",
     status: "estimated delivery tomorrow",
     date: "2024-02-03T15:00:00.000Z", // The next day from the current date
+    active: true,
   },
   {
     id: uuidv4(),
     item: "swiffer",
     status: "order placed",
     date: "2024-02-01T15:00:00.000Z", // Assuming order placed today
+    active: true,
   },
 ];
