@@ -1,14 +1,35 @@
-import { LeftPanel } from "@/components/leftPanel";
-import { RightPanel } from "@/components/rightPanel";
+"use client"
+
+import {
+  DndContext,
+  type DragEndEvent,
+  type DragOverEvent,
+  DragOverlay,
+  type DragStartEvent,
+  useSensor,
+  useSensors,
+  KeyboardSensor,
+  Announcements,
+  UniqueIdentifier,
+  TouchSensor,
+  MouseSensor,
+} from "@dnd-kit/core";
+import { SortableContext, arrayMove } from "@dnd-kit/sortable";
+import { SummaryCard } from "@/components/summaryCard";
+import { CalendarCard } from "@/components/calendarCard";
+import { TodoCard } from "@/components/todoCard";
+import { TrackingCard } from "@/components/trackingCard";
 
 export default function Home() {
   return (
     <div className="flex flex-row w-full justify-center grow mt-[50px] gap-[70px]">
       <div className="w-3/5">
-        <LeftPanel />
+        <SummaryCard />
       </div>
       <div className="w-2/5">
-        <RightPanel />
+        <TodoCard />
+        <CalendarCard />
+        <TrackingCard />
       </div>
     </div>
   );

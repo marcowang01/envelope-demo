@@ -16,7 +16,12 @@ function CalendarCardItems() {
       )}
     >
       {calendarEvents.map((event) => (
-        <SimpleRow key={event.id} title={event.event} label={event.label} />
+        <SimpleRow 
+          key={event.id} 
+          id={event.id}
+          title={event.content} 
+          label={event.status} 
+        />
       ))}
     </div>
   );

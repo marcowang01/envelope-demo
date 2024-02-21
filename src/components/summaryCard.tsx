@@ -9,6 +9,7 @@ function SummaryCardItems() {
         return (
           <EmailRow
             key={`summary-${index}`}
+            id={email.id}
             sender={email.sender}
             title={email.title}
             date={email.date}

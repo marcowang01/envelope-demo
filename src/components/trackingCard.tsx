@@ -16,7 +16,7 @@ function TrackingCardItems() {
       )}
     >
       {trackingItems.map((item) => (
-        <SimpleRow key={item.id} title={item.item} label={item.status} />
+        <SimpleRow key={item.id} id={item.id} title={item.content} label={item.status} />
       ))}
     </div>
   );

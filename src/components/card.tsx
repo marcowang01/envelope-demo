@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
+import { useDndContext, type UniqueIdentifier } from "@dnd-kit/core";
 
 export function Card({
   title,

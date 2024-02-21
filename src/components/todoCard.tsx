@@ -4,6 +4,7 @@ import { PencilIcon } from "@/assets/pencil-icon";
 import { EmailRow } from "./emailRow";
 import clsx from "clsx";
 
+
 function TodoCardItems() {
   return (
     // 176 is exactly 4 rows of 44px
@@ -19,6 +20,7 @@ function TodoCardItems() {
         return (
           <EmailRow
             key={`todo-${index}`}
+            id={email.id}
             sender={email.sender}
             title={email.title}
             gapClass={"gap-[0px]"}
