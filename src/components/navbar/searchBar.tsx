@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { CmdIcon } from "@/assets/cmd-icon";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ export function SearchBar() {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // Check if the pressed key is Enter
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleSubmit();
     }
   };

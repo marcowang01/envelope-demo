@@ -17,7 +17,19 @@ export interface FlightCardProps {
 }
 
 export function FlightCard(props: FlightCardProps) {
-  const { arrivalAirport, arrivalCity, departureAirport, departureCity, flightNumber, seat, boardGroup, passengerName, recordLocator, textColor, highlightColor } = props;
+  const {
+    arrivalAirport,
+    arrivalCity,
+    departureAirport,
+    departureCity,
+    flightNumber,
+    seat,
+    boardGroup,
+    passengerName,
+    recordLocator,
+    textColor,
+    highlightColor,
+  } = props;
 
   return (
     <div className="flex flex-col grow">
@@ -29,7 +41,7 @@ export function FlightCard(props: FlightCardProps) {
           highlightColor={highlightColor}
         />
         <div className={clsx(highlightColor)}>
-        <PlaneIcon />
+          <PlaneIcon />
         </div>
         <BookingCardTitle
           title={arrivalCity}
@@ -70,7 +82,7 @@ export function FlightCard(props: FlightCardProps) {
         />
       </div>
       {/* title for record locator */}
-      <div className="mt-[8px]">  
+      <div className="mt-[8px]">
         <BookingCardTitle
           title="confirmation"
           content={recordLocator}
@@ -79,7 +91,5 @@ export function FlightCard(props: FlightCardProps) {
         />
       </div>
     </div>
-  )
-
-
+  );
 }

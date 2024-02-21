@@ -34,11 +34,11 @@ body {
 }
 
 .shadow-border-pink {
-  box-shadow: 0 0 0 1px #FFF2F2;
+  box-shadow: 0 0 0 1px #fff2f2;
 }
 
 .shadow-border-gray {
-  box-shadow: 0 0 0 1px #CCCCCC;
+  box-shadow: 0 0 0 1px #cccccc;
 }
 
 /* Still in your global CSS file */
@@ -66,4 +66,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ccc;
 }
-

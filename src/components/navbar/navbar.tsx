@@ -5,7 +5,6 @@ import { SearchBar } from "../navbar/searchBar";
 import Link from "next/link";
 
 export function Navbar() {
-
   return (
     <div className="flex flex-row gap-3 ">
       <Link href={"/"}>

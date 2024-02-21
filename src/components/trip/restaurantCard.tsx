@@ -14,7 +14,15 @@ export interface RestaurantCardProps {
 }
 
 export function RestaurantCard(props: RestaurantCardProps) {
-  const { restaurantName, bookingSize, address, bookingDate, bookingTime, textColor, highlightColor } = props;
+  const {
+    restaurantName,
+    bookingSize,
+    address,
+    bookingDate,
+    bookingTime,
+    textColor,
+    highlightColor,
+  } = props;
 
   return (
     <div className="flex flex-col grow">

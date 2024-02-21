@@ -10,7 +10,8 @@ export interface MuseumCardProps {
 }
 
 export function MuseumCard(props: MuseumCardProps) {
-  const { ticketCount, openingHours, address, textColor, highlightColor } = props;
+  const { ticketCount, openingHours, address, textColor, highlightColor } =
+    props;
 
   return (
     <div className="flex flex-col grow mt-[14px]">

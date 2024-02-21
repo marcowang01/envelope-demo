@@ -22,20 +22,20 @@ export function StayCard(props: StayCardProps) {
         highlightColor={highlightColor}
       />
       <div className="mt-[15px]">
-      <BookingCardLabel
-        label="guests"
-        content={`${guests} PEOPLE`}
-        textColor={textColor}
-        highlightColor={highlightColor}
-      />
+        <BookingCardLabel
+          label="guests"
+          content={`${guests} PEOPLE`}
+          textColor={textColor}
+          highlightColor={highlightColor}
+        />
       </div>
       <div className="mt-[8px]">
-      <BookingCardLabel
-        label="address"
-        content={address}
-        textColor={textColor}
-        highlightColor={highlightColor}
-      />
+        <BookingCardLabel
+          label="address"
+          content={address}
+          textColor={textColor}
+          highlightColor={highlightColor}
+        />
       </div>
     </div>
   );
