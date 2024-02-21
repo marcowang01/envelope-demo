@@ -63,7 +63,7 @@ export function EmailRow({
           dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
         }),
       )}
-      style={style}
+      // style={style}
       {...attributes}
       {...listeners}
     >
