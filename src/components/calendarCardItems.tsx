@@ -1,10 +1,12 @@
 import { Card } from "./card";
-import { calendarEvents } from "@/data/emails";
+import { CalendarEmail } from "@/data/emails";
 import { CalendarIcon } from "@/assets/calendar-icon";
 import { SimpleRow } from "./simpleRow";
 import clsx from "clsx";
 
-function CalendarCardItems() {
+export function CalendarCardItems(
+  { calendarEvents } : { calendarEvents: CalendarEmail[] }
+) {
   return (
     // 160 is exactly 4 rows of 40px
     <div
@@ -27,13 +29,3 @@ function CalendarCardItems() {
   );
 }
 
-export function CalendarCard() {
-  return (
-    <Card
-      title={"Calendar"}
-      body={<CalendarCardItems />}
-      colorClass="group-hover:text-red-400"
-      icon={<CalendarIcon />}
-    />
-  );
-}

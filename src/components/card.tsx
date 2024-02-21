@@ -2,6 +2,12 @@ import clsx from "clsx";
 import { ReactNode } from "react";
 import { useDndContext, type UniqueIdentifier } from "@dnd-kit/core";
 
+export interface Card {
+  id: UniqueIdentifier;
+  title: string;
+}
+
+
 export function Card({
   title,
   body,

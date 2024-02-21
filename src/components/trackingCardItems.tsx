@@ -1,10 +1,12 @@
 import { Card } from "./card";
-import { trackingItems } from "@/data/emails";
+import { TrackingEmail } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
 import { SimpleRow } from "./simpleRow";
 import clsx from "clsx";
 
-function TrackingCardItems() {
+export function TrackingCardItems(
+  { trackingItems } : { trackingItems: TrackingEmail[] }
+) {
   return (
     // 120 is exactly 3 rows of 40px
     <div
@@ -22,21 +24,10 @@ function TrackingCardItems() {
   );
 }
 
-function LoadingIcon() {
+export function LoadingIcon() {
   return (
     <div className="group-hover-spin">
       <CIcon />
     </div>
-  );
-}
-
-export function TrackingCard() {
-  return (
-    <Card
-      title={"Tracking"}
-      body={<TrackingCardItems />}
-      colorClass="group-hover:text-blue-500"
-      icon={<LoadingIcon />}
-    />
   );
 }

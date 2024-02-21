@@ -1,11 +1,13 @@
 import { Card } from "./card";
-import { summaryItems } from "@/data/emails";
+import { SummaryEmail } from "@/data/emails";
 import { EmailRow } from "./emailRow";
 
-function SummaryCardItems() {
+export function SummaryCardItems(
+  { summaryEmails } : { summaryEmails: SummaryEmail[] }
+) {
   return (
     <div className="flex flex-col gap-[20px] w-full mt-[30px]">
-      {summaryItems.map((email, index) => {
+      {summaryEmails.map((email, index) => {
         return (
           <EmailRow
             key={`summary-${index}`}
@@ -22,6 +24,3 @@ function SummaryCardItems() {
   );
 }
 
-export function SummaryCard() {
-  return <Card title={"While you were gone..."} body={<SummaryCardItems />} />;
-}

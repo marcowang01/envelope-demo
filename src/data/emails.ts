@@ -4,15 +4,6 @@ export interface Email {
   id: string;
   date: string;
   active: boolean;
-
-  sender?: string;
-  title?: string;
-  seen?: boolean;
-
-  completed?: boolean;
-
-  content?: string;
-  status?: string;
 }
 
 export interface SummaryEmail extends Email {
@@ -38,7 +29,7 @@ export interface TrackingEmail extends Email {
   status: string;
 }
 
-export const summaryItems: SummaryEmail[] = [
+export const summaryEmails: SummaryEmail[] = [
   {
     id: uuidv4(),
     sender: "Lucas.I",

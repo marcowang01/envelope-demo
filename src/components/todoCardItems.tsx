@@ -1,11 +1,10 @@
-import { Card } from "./card";
-import { todos } from "@/data/emails";
-import { PencilIcon } from "@/assets/pencil-icon";
 import { EmailRow } from "./emailRow";
 import clsx from "clsx";
+import { TodoEmail } from "@/data/emails";
 
-
-function TodoCardItems() {
+export function TodoCardItems(
+  { todos } : { todos: TodoEmail[] }
+) {
   return (
     // 176 is exactly 4 rows of 44px
     <div
@@ -32,13 +31,3 @@ function TodoCardItems() {
   );
 }
 
-export function TodoCard() {
-  return (
-    <Card
-      title={"To-do"}
-      body={<TodoCardItems />}
-      colorClass="group-hover:text-yellow-400"
-      icon={<PencilIcon />}
-    />
-  );
-}

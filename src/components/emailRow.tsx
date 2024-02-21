@@ -57,8 +57,9 @@ export function EmailRow({
 
   return (
     <div
+      ref={setNodeRef}
       className={clsx(
-        "italic text-gray-450  flex flex-row font-xl w-full cursor-grab",
+        "group/row italic text-gray-450  flex flex-row font-xl w-full cursor-grab",
         gapClass,
         variants({
           dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
@@ -68,10 +69,10 @@ export function EmailRow({
       {...attributes}
       {...listeners}
     >
-      <div className="font-bold cursor-pointer hover:text-gray-800 active:text-gray-500 w-[85px]">
+      <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]">
         {sender}
       </div>
-      <div className="grow flex flex-row justify-between items-center  hover:text-gray-800  active:text-gray-500  cursor-pointer">
+      <div className="grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer">
         <div className="grow ">{title}</div>
         {date && <div>{formatDate(new Date(date))}</div>}
       </div>
