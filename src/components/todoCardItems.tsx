@@ -1,6 +1,6 @@
 import { EmailRow } from "./emailRow";
 import clsx from "clsx";
-import { TodoEmail } from "@/data/emails";
+import { Email, TodoEmail } from "@/data/emails";
 
 export function TodoCardItems(
   { todos } : { todos: TodoEmail[] }
@@ -19,7 +19,7 @@ export function TodoCardItems(
         return (
           <EmailRow
             key={`todo-${index}`}
-            id={email.id}
+            email={email as Email}
             sender={email.sender}
             title={email.title}
             gapClass={"gap-[0px]"}

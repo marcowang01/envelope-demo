@@ -1,5 +1,5 @@
 import { Card } from "./card";
-import { SummaryEmail } from "@/data/emails";
+import { SummaryEmail, Email } from "@/data/emails";
 import { EmailRow } from "./emailRow";
 
 export function SummaryCardItems(
@@ -11,10 +11,9 @@ export function SummaryCardItems(
         return (
           <EmailRow
             key={`summary-${index}`}
-            id={email.id}
+            email={email as Email}
             sender={email.sender}
             title={email.title}
-            date={email.date}
             gapClass={"gap-[40px]"}
             actions={["view", "edit"]}
           />

@@ -6,21 +6,20 @@ import type { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { cva } from "class-variance-authority";
-import { formatDate } from "@/lib/util";
+import { formatDate } from "@/lib/utils";
+import { Email } from "@/data/emails";
 
 export function EmailRow({
-  id,
+  email,
   sender,
   title,
-  date,
   gapClass,
   actions,
   isOverlay,
 }: {
-  id: UniqueIdentifier;
+  email: Email;
   sender: string;
   title: string;
-  date?: string;
   gapClass: string;
   actions: string[];
   isOverlay?: boolean;
@@ -34,9 +33,10 @@ export function EmailRow({
     transition,
     isDragging,
   } = useSortable({
-    id: id,
+    id: email.id,
     data: {
-      date: date,
+      type: email.type,
+      email: email,
     } 
   });
 
@@ -74,7 +74,7 @@ export function EmailRow({
       </div>
       <div className="grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer">
         <div className="grow ">{title}</div>
-        {date && <div>{formatDate(new Date(date))}</div>}
+        {email.type === "summary" && <div>{formatDate(new Date(email.date))}</div>}
       </div>
 
       <div className="flex flex-row justify-start gap-[20px] items-center ">
