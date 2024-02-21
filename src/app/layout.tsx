@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(inter.className)}>
         <div className="py-[50px] min-h-screen flex flex-col w-[1200px] mx-auto">
-          <Navbar />
+          <div className="mb-[50px]">
+            <Navbar />
+          </div>
           {children}
         </div>
       </body>

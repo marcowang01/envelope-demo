@@ -158,7 +158,7 @@ export default function Home() {
       onDragEnd={onDragEnd}
       onDragOver={onDragOver}
     >
-      <div className="flex flex-row w-full justify-center grow mt-[50px] gap-[70px]">
+      <div className="flex flex-row w-full justify-center grow gap-[70px]">
         <div className="w-3/5">
           <EmailCard
             card={{ id: "summary", title: "While you were gone..." }}
