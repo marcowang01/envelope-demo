@@ -1,13 +1,24 @@
 import { v4 as uuidv4 } from "uuid";
 import { UniqueIdentifier } from "@dnd-kit/core";
 
-export type EmailType = "summary" | "todo" | "calendar" | "tracking";
+export enum EmailType {
+  Summary = "summary",
+  Todo = "todo",
+  Calendar = "calendar",
+  Tracking = "tracking",
+}
 
 export interface Email {
   id: UniqueIdentifier;
   date: string;
   active: boolean;
   type: EmailType;  
+  sender?: string;
+  title?: string;
+  seen?: boolean;
+  completed?: boolean;
+  content?: string;
+  status?: string;
 }
 
 export interface SummaryEmail extends Email {
@@ -39,7 +50,7 @@ export const summaryEmails: SummaryEmail[] = [
     sender: "Lucas.I",
     title: "au and dxf files",
     date: "2024-01-31T15:00:00.000Z",
-    type: "summary",
+    type: EmailType.Summary,
     seen: false,
     active: true,
   },
@@ -48,7 +59,7 @@ export const summaryEmails: SummaryEmail[] = [
     sender: "Sarah.C",
     title: "exa.ai logo design next steps",
     date: "2024-01-31T15:00:00.000Z",
-    type: "summary",
+    type: EmailType.Summary,
     seen: false,
     active: true,
   },
@@ -57,7 +68,7 @@ export const summaryEmails: SummaryEmail[] = [
     sender: "Geoff.C",
     title: "Peter Stevenson intro",
     date: "2024-01-29T15:00:00.000Z",
-    type: "summary",
+    type: EmailType.Summary,
     seen: false,
     active: true,
   },
@@ -66,7 +77,7 @@ export const summaryEmails: SummaryEmail[] = [
     sender: "Chris.C",
     title: "wibeeeeeee",
     date: "2024-01-29T15:00:00.000Z",
-    type: "summary",
+    type: EmailType.Summary,
     seen: false,
     active: true,
   },
@@ -78,7 +89,7 @@ export const todos: TodoEmail[] = [
     sender: "Jim.W",
     title: "you might find this interesting",
     date: "2024-01-31T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -87,7 +98,7 @@ export const todos: TodoEmail[] = [
     sender: "Elisa.V",
     title: "missing meeting today",
     date: "2024-01-30T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -96,7 +107,7 @@ export const todos: TodoEmail[] = [
     sender: "Lilith.Y",
     title: "clock pcb",
     date: "2024-01-30T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -105,7 +116,7 @@ export const todos: TodoEmail[] = [
     sender: "Marco.W",
     title: "can I merge?",
     date: "2024-01-29T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -114,7 +125,7 @@ export const todos: TodoEmail[] = [
     sender: "Pamela.W",
     title: "Clean up code base",
     date: "2024-01-29T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -123,7 +134,7 @@ export const todos: TodoEmail[] = [
     sender: "Jenny.R",
     title: "update the docs",
     date: "2024-01-29T15:00:00.000Z",
-    type: "todo",
+    type: EmailType.Todo,
     completed: false,
     active: true,
   },
@@ -135,7 +146,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "Rabbit.I",
     content: "rabbit <> Gary",
     status: "3:30 pm",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-02T15:30:00.000Z", // Assuming current date is 2024-02-02
     active: true,
   },
@@ -144,7 +155,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "Rabbit.I",
     content: "team all hands",
     status: "5:00 pm",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-02T17:00:00.000Z", // Assuming the same date for simplicity\
     active: true,
   },
@@ -153,7 +164,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "Northwestern.U",
     content: "thesis meeting",
     status: "tomorrow 7:00 am",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-03T07:00:00.000Z", // The next day
     active: true,
   },
@@ -162,7 +173,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "OpenTable",
     content: "dinner at the French Laundry",
     status: "in 2 days",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-04T15:00:00.000Z", // In 2 days from the assumed date
     active: true,
   },
@@ -171,7 +182,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "United.A",
     content: "flight to SF",
     status: "in 5 days",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-07T15:00:00.000Z", // In 5 days from the assumed date
     active: true,
   },
@@ -180,7 +191,7 @@ export const calendarEvents: CalendarEmail[] = [
     sender: "AirBnb",
     content: "Trip at Yosemite",
     status: "in 2 weeks",
-    type: "calendar",
+    type: EmailType.Calendar,
     date: "2024-02-16T15:00:00.000Z", // In 2 weeks from the assumed date
     active: true,
   },
@@ -191,7 +202,7 @@ export const trackingItems: TrackingEmail[] = [
     id: `tracking-${uuidv4()}`,
     content: "mattress",
     status: "delivered 2 days ago",
-    type: "tracking",
+    type: EmailType.Tracking,
     date: "2024-01-31T15:00:00.000Z", // 2 days ago from the assumed current date
     active: true,
   },
@@ -199,7 +210,7 @@ export const trackingItems: TrackingEmail[] = [
     id: `tracking-${uuidv4()}`,
     content: "shampoo",
     status: "estimated delivery tomorrow",
-    type: "tracking",
+    type: EmailType.Tracking,
     date: "2024-02-03T15:00:00.000Z", // The next day from the current date
     active: true,
   },
@@ -207,7 +218,7 @@ export const trackingItems: TrackingEmail[] = [
     id: `tracking-${uuidv4()}`,
     content: "swiffer",
     status: "order placed",
-    type: "tracking",
+    type: EmailType.Tracking,
     date: "2024-02-01T15:00:00.000Z", // Assuming order placed today
     active: true,
   },
@@ -215,7 +226,7 @@ export const trackingItems: TrackingEmail[] = [
     id: `tracking-${uuidv4()}`,
     content: "toilet paper",
     status: "delivered 5 days ago",
-    type: "tracking",
+    type: EmailType.Tracking,
     date: "2024-01-28T15:00:00.000Z", // 5 days ago from the current date
     active: true,
   },
@@ -223,7 +234,7 @@ export const trackingItems: TrackingEmail[] = [
     id: `tracking-${uuidv4()}`,
     content: "coffee",
     status: "arriving in 2 days",
-    type: "tracking",
+    type: EmailType.Tracking,
     date: "2024-02-01T15:00:00.000Z", // Assuming order placed today
     active: true,
   },
