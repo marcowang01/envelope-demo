@@ -9,9 +9,10 @@ export function JapanTripPanel() {
       </div>
       <div className="w-full h-[1px] bg-gray-350 mb-[30px]" />
       <div className="flex flex-row gap-[20px] mb-[30px]">
-        <BookingCard />
-        <BookingCard />
-        <BookingCard />
+        <BookingCard title="ANA" />
+        <BookingCard title="Opentable" />
+        <BookingCard title="Airbnb" />
+        <BookingCard title="2121" />
       </div>
       <div className="w-full h-[1px] bg-gray-350 mb-[30px]" />
 
@@ -19,7 +20,7 @@ export function JapanTripPanel() {
         <div className="text-4xl font-light mb- text-gray-500">
           april
         </div>
-        <div className="w-full mr-[90px]">
+        <div className="w-full">
           <Calendar />
         </div>
       </div>
