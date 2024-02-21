@@ -19,18 +19,16 @@ export function BookingCard({
   children: ReactNode
 }) {
   return (
-    <div className={clsx("w-[175px] h-[200px] rounded-[25px] bg-blue-200 px-[17px] pb-[17px] flex flex-col", bgColor)}>
-      <div className="relative w-full flex flex-row justify-between items-end">
-        <div className="relative">
-          {logo}
-        </div>
+    <div className={clsx("w-[175px] h-[200px] rounded-[25px] px-[17px] pb-[17px] flex flex-col", bgColor)}>
+      <div className="w-full flex flex-row justify-between items-end h-[41px] flex-shrink-0">
+        {logo}
         <div className="flex-shrink-0">
           <BookingCardLabel
             label="date"
             content={date}
             textColor={textColor}
             highlightColor={highlightColor}
-            extraStyles="text-right mt-[23px]"
+            extraStyles="text-right"
           />
         </div>
       </div>

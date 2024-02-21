@@ -1,10 +1,10 @@
+"use client"
+
 import { BookingCard } from "./bookingCard"
 import { Calendar } from "./calendar"
 import { FlightCard } from "./FlightCard"
-import { AnaIconAdjusted } from "@/assets/ana-icon"
-import { OpentableIcon } from "@/assets/opentable-icon"
-import { AirbnbIcon } from "@/assets/airbnb-icon"
-import { MuseumIcon } from "@/assets/Museum-icon"
+import { RestaurantCard } from "./restaurantCard"
+import { AnaLogo, MuseumIcon, OpentableLogo, AirbnbLogo } from "./icons"
 
 export function JapanTripPanel() {
   return (
@@ -15,7 +15,7 @@ export function JapanTripPanel() {
       <div className="w-full h-[1px] bg-gray-350 mb-[30px]" />
       <div className="flex flex-row gap-[20px] mb-[30px]">
         <BookingCard
-          logo={<AnaIconAdjusted />}
+          logo={<AnaLogo />}
           date={"03 APR 5 PM"}
           bgColor={"bg-[#D4E5EF]"}
           textColor={"text-[#1F3460]"}
@@ -33,6 +33,23 @@ export function JapanTripPanel() {
             recordLocator="1GR3EN"
             textColor="text-[#1F3460]"
             highlightColor="text-[#2E4C8C]"
+          />
+        </BookingCard>
+        <BookingCard
+          logo={<OpentableLogo />}
+          date={"04 APR 6 PM"}
+          bgColor={"bg-[#F15D5D]"}
+          textColor={"text-[#FFFFFF]"}
+          highlightColor={"text-[#FFFFFF]"}
+        >
+          <RestaurantCard
+            restaurantName="UDON SHIN"
+            bookingSize="4 PEOPLE"
+            address="〒151-0053 Tokyo, Shibuya City, Yoyogi, 2 Chome–20–16 神宮ビル 1F"
+            bookingDate="04 APR"
+            bookingTime="6 PM"
+            textColor="text-[#FFFFFF]"
+            highlightColor="text-[#FFFFFF]"
           />
         </BookingCard>
       </div>
