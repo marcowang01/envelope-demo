@@ -15,7 +15,7 @@ import {
   MouseSensor,
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import { Card } from "@/components/card";
+import { Card, EmailCard } from "@/components/card";
 import { summaryEmails, todos, calendarEvents, trackingItems } from "@/data/emails";
 import { SummaryCardItems } from "@/components/summaryCardItems";
 import { CalendarCardItems } from "@/components/calendarCardItems";
@@ -27,9 +27,25 @@ import { LoadingIcon } from "@/components/trackingCardItems";
 import { CalendarIcon } from "@/assets/calendar-icon";
 import { PencilIcon } from "@/assets/pencil-icon";
 
+const defaultCards = [
+  { id: "summary", title: "While you were gone..." },
+  { id: "todo", title: "To-do" },
+  { id: "calendar", title: "Calendar" },
+  { id: "tracking", title: "Tracking" },
+]
+
+const initialEmails: Email[] = [
+  ...summaryEmails,
+  ...todos,
+  ...calendarEvents,
+  ...trackingItems
+]
+
 export default function Home() {
-  const [emails, setEmails] = useState<Email[]>();
+  const [cards, setCards] = useState<Card[]>(defaultCards);
+  const [emails, setEmails] = useState<Email[]>(initialEmails);
   const [activeEmail, setActiveEmail] = useState<Email | null>(null);
+  const [activeCard, setActiveCard] = useState<Card | null>(null);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -40,26 +56,26 @@ export default function Home() {
   return (
     <div className="flex flex-row w-full justify-center grow mt-[50px] gap-[70px]">
       <div className="w-3/5">
-        <Card 
-          title={"While you were gone..."} 
+        <EmailCard 
+          card={{ id: "summary", title: "While you were gone..." }}
           body={<SummaryCardItems summaryEmails={summaryEmails} />} 
         />
       </div>
       <div className="w-2/5">
-        <Card
-          title={"To-do"}
+        <EmailCard
+          card={{ id: "todo", title: "To-do" }}
           body={<TodoCardItems todos={todos} />}
           colorClass="group-hover:text-yellow-400"
           icon={<PencilIcon />}
         />
-        <Card
-          title={"Calendar"}
+        <EmailCard
+          card={{ id: "calendar", title: "Calendar" }}
           body={<CalendarCardItems calendarEvents={calendarEvents} />}
           colorClass="group-hover:text-red-400"
           icon={<CalendarIcon />}
         />
-        <Card
-          title={"Tracking"}
+        <EmailCard
+          card={{ id: "tracking", title: "Tracking" }}
           body={<TrackingCardItems trackingItems={trackingItems} />}
           colorClass="group-hover:text-blue-500"
           icon={<LoadingIcon />}

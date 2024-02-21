@@ -8,13 +8,13 @@ export interface Card {
 }
 
 
-export function Card({
-  title,
+export function EmailCard({
+  card,
   body,
   colorClass,
   icon,
 }: {
-  title: string;
+  card: Card;
   body: ReactNode;
   colorClass?: string;
   icon?: ReactNode;
@@ -28,7 +28,7 @@ export function Card({
         )}
       >
         {icon && <div className="w-[20px]">{icon}</div>}
-        {title}
+        {card.title}
       </div>
       <div className="w-full h-[1px] bg-gray-350" />
       <div className="w-full mb-[40px]">{body}</div>
