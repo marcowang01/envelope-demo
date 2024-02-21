@@ -4,9 +4,11 @@ import { CIcon } from "@/assets/c-icon";
 import { SimpleRow } from "./simpleRow";
 import clsx from "clsx";
 
-export function TrackingCardItems(
-  { trackingItems } : { trackingItems: TrackingEmail[] }
-) {
+export function TrackingCardItems({
+  trackingItems,
+}: {
+  trackingItems: TrackingEmail[];
+}) {
   return (
     // 120 is exactly 3 rows of 40px
     <div
@@ -18,7 +20,12 @@ export function TrackingCardItems(
       )}
     >
       {trackingItems.map((item) => (
-        <SimpleRow key={item.id} id={item.id} title={item.content} label={item.status} />
+        <SimpleRow
+          key={item.id}
+          id={item.id}
+          title={item.content}
+          label={item.status}
+        />
       ))}
     </div>
   );

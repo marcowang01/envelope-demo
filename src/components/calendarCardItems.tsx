@@ -4,9 +4,11 @@ import { CalendarIcon } from "@/assets/calendar-icon";
 import { SimpleRow } from "./simpleRow";
 import clsx from "clsx";
 
-export function CalendarCardItems(
-  { calendarEvents } : { calendarEvents: CalendarEmail[] }
-) {
+export function CalendarCardItems({
+  calendarEvents,
+}: {
+  calendarEvents: CalendarEmail[];
+}) {
   return (
     // 160 is exactly 4 rows of 40px
     <div
@@ -18,14 +20,13 @@ export function CalendarCardItems(
       )}
     >
       {calendarEvents.map((event) => (
-        <SimpleRow 
-          key={event.id} 
+        <SimpleRow
+          key={event.id}
           id={event.id}
-          title={event.content} 
-          label={event.status} 
+          title={event.content}
+          label={event.status}
         />
       ))}
     </div>
   );
 }
-

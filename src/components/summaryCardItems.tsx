@@ -2,9 +2,11 @@ import { Card } from "./card";
 import { SummaryEmail, Email } from "@/data/emails";
 import { EmailRow } from "./emailRow";
 
-export function SummaryCardItems(
-  { summaryEmails } : { summaryEmails: SummaryEmail[] }
-) {
+export function SummaryCardItems({
+  summaryEmails,
+}: {
+  summaryEmails: SummaryEmail[];
+}) {
   return (
     <div className="flex flex-col gap-[20px] w-full mt-[30px]">
       {summaryEmails.map((email, index) => {
@@ -22,4 +24,3 @@ export function SummaryCardItems(
     </div>
   );
 }
-

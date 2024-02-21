@@ -12,7 +12,7 @@ export interface Email {
   id: UniqueIdentifier;
   date: string;
   active: boolean;
-  type: EmailType;  
+  type: EmailType;
   sender?: string;
   title?: string;
   seen?: boolean;

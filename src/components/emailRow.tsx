@@ -24,7 +24,6 @@ export function EmailRow({
   actions: string[];
   isOverlay?: boolean;
 }) {
-
   const {
     setNodeRef,
     attributes,
@@ -37,7 +36,7 @@ export function EmailRow({
     data: {
       type: email.type,
       email: email,
-    } 
+    },
   });
 
   const style = {
@@ -54,7 +53,6 @@ export function EmailRow({
     },
   });
 
-
   return (
     <div
       ref={setNodeRef}
@@ -63,7 +61,7 @@ export function EmailRow({
         gapClass,
         variants({
           dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
-        })
+        }),
       )}
       style={style}
       {...attributes}
@@ -74,7 +72,9 @@ export function EmailRow({
       </div>
       <div className="grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer">
         <div className="grow ">{title}</div>
-        {email.type === "summary" && <div>{formatDate(new Date(email.date))}</div>}
+        {email.type === "summary" && (
+          <div>{formatDate(new Date(email.date))}</div>
+        )}
       </div>
 
       <div className="flex flex-row justify-start gap-[20px] items-center ">

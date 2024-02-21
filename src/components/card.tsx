@@ -1,15 +1,18 @@
-"use client"
+"use client";
 
 import clsx from "clsx";
 import { ReactNode, useMemo } from "react";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import { useDndContext, type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
+import {
+  useDndContext,
+  type UniqueIdentifier,
+  useDroppable,
+} from "@dnd-kit/core";
 import { Email } from "@/data/emails";
 export interface Card {
   id: UniqueIdentifier;
   title: string;
 }
-
 
 export function EmailCard({
   card,
@@ -24,14 +27,11 @@ export function EmailCard({
   colorClass?: string;
   icon?: ReactNode;
 }) {
-
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
   }, [emailItems]);
 
-  const {
-    setNodeRef,
-  } = useDroppable({
+  const { setNodeRef } = useDroppable({
     id: card.id,
     data: {
       type: "card",
@@ -40,10 +40,7 @@ export function EmailCard({
   });
 
   return (
-    <div 
-      ref={setNodeRef}
-      className="group w-full"
-    >
+    <div ref={setNodeRef} className="group w-full">
       <div
         className={clsx(
           "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px] text-gray-500",
@@ -55,9 +52,7 @@ export function EmailCard({
       </div>
       <div className="w-full h-[1px] bg-gray-350" />
       <div className="w-full mb-[40px]">
-        <SortableContext items={emailIds}>
-          {body}
-        </SortableContext>
+        <SortableContext items={emailIds}>{body}</SortableContext>
       </div>
     </div>
   );

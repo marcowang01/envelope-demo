@@ -2,9 +2,7 @@ import { EmailRow } from "./emailRow";
 import clsx from "clsx";
 import { Email, TodoEmail } from "@/data/emails";
 
-export function TodoCardItems(
-  { todos } : { todos: TodoEmail[] }
-) {
+export function TodoCardItems({ todos }: { todos: TodoEmail[] }) {
   return (
     // 176 is exactly 4 rows of 44px
     <div
@@ -30,4 +28,3 @@ export function TodoCardItems(
     </div>
   );
 }
-

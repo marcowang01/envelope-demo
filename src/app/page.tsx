@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   DndContext,
@@ -17,7 +17,17 @@ import {
 import { createPortal } from "react-dom";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { Card, EmailCard } from "@/components/card";
-import { summaryEmails, todos, calendarEvents, trackingItems, EmailType, SummaryEmail, TodoEmail, CalendarEmail, TrackingEmail } from "@/data/emails";
+import {
+  summaryEmails,
+  todos,
+  calendarEvents,
+  trackingItems,
+  EmailType,
+  SummaryEmail,
+  TodoEmail,
+  CalendarEmail,
+  TrackingEmail,
+} from "@/data/emails";
 import { SummaryCardItems } from "@/components/summaryCardItems";
 import { CalendarCardItems } from "@/components/calendarCardItems";
 import { TodoCardItems } from "@/components/todoCardItems";
@@ -34,14 +44,14 @@ const defaultCards = [
   { id: "todo", title: "To-do" },
   { id: "calendar", title: "Calendar" },
   { id: "tracking", title: "Tracking" },
-]
+];
 
 const initialEmails: Email[] = [
   ...summaryEmails,
   ...todos,
   ...calendarEvents,
-  ...trackingItems
-]
+  ...trackingItems,
+];
 
 export default function Home() {
   const [cards, setCards] = useState<Card[]>(defaultCards);
@@ -52,7 +62,7 @@ export default function Home() {
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor),
-    useSensor(KeyboardSensor)
+    useSensor(KeyboardSensor),
   );
 
   function onDragStart(event: DragStartEvent) {
@@ -60,7 +70,7 @@ export default function Home() {
     // something like hasdragglbldata
 
     const data = event.active.data.current;
-    const emailType = data?.type as EmailType
+    const emailType = data?.type as EmailType;
 
     if (data && emailType === "summary") {
       setActiveEmail(data.email);
@@ -73,7 +83,7 @@ export default function Home() {
     setActiveCard(null);
 
     const { active, over } = event;
-    if (!over) return
+    if (!over) return;
 
     const activeId = active.id;
     const overId = over.id;
@@ -106,30 +116,27 @@ export default function Home() {
 
     // Im dropping a email over another email
     if (isActiveAnEmail && isOverAnEmail) {
-      console.log("Dropping a email over another email")
+      console.log("Dropping a email over another email");
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const overIndex = emails.findIndex((t) => t.id === overId);
         const activeEmail = emails[activeIndex];
         const overEmail = emails[overIndex];
 
-        if (
-          activeEmail && overEmail &&
-          activeEmail.type !== overEmail.type
-        ) {
+        if (activeEmail && overEmail && activeEmail.type !== overEmail.type) {
           activeEmail.type = overEmail.type;
           return arrayMove(emails, activeIndex, overIndex - 1);
         }
 
         return arrayMove(emails, activeIndex, overIndex);
-      })
+      });
     }
 
     const isOverACard = overData?.type === "card";
 
     // Im dropping a email over a Card
     if (isActiveAnEmail && isOverACard) {
-      console.log("Dropping a email over a Card")
+      console.log("Dropping a email over a Card");
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const activeEmail = emails[activeIndex];
@@ -140,11 +147,9 @@ export default function Home() {
         }
 
         return emails;
-      })
+      });
     }
   }
-
-  
 
   return (
     <DndContext
@@ -155,40 +160,78 @@ export default function Home() {
     >
       <div className="flex flex-row w-full justify-center grow mt-[50px] gap-[70px]">
         <div className="w-3/5">
-          <EmailCard 
+          <EmailCard
             card={{ id: "summary", title: "While you were gone..." }}
-            emailItems={emails.filter(email => email.type === EmailType.Summary)}
-            body={<SummaryCardItems summaryEmails={emails.filter(email => email.type === EmailType.Summary) as SummaryEmail[]} />}
+            emailItems={emails.filter(
+              (email) => email.type === EmailType.Summary,
+            )}
+            body={
+              <SummaryCardItems
+                summaryEmails={
+                  emails.filter(
+                    (email) => email.type === EmailType.Summary,
+                  ) as SummaryEmail[]
+                }
+              />
+            }
           />
         </div>
         <div className="w-2/5">
           <EmailCard
             card={{ id: "todo", title: "To-do" }}
-            emailItems={emails.filter(email => email.type === EmailType.Todo)}
-            body={<TodoCardItems todos={emails.filter(email => email.type === EmailType.Todo) as TodoEmail[]} />}
+            emailItems={emails.filter((email) => email.type === EmailType.Todo)}
+            body={
+              <TodoCardItems
+                todos={
+                  emails.filter(
+                    (email) => email.type === EmailType.Todo,
+                  ) as TodoEmail[]
+                }
+              />
+            }
             colorClass="group-hover:text-yellow-400"
             icon={<PencilIcon />}
           />
           <EmailCard
             card={{ id: "calendar", title: "Calendar" }}
-            emailItems={emails.filter(email => email.type === EmailType.Calendar)}
-            body={<CalendarCardItems calendarEvents={emails.filter(email => email.type === EmailType.Calendar) as CalendarEmail[]} />}
+            emailItems={emails.filter(
+              (email) => email.type === EmailType.Calendar,
+            )}
+            body={
+              <CalendarCardItems
+                calendarEvents={
+                  emails.filter(
+                    (email) => email.type === EmailType.Calendar,
+                  ) as CalendarEmail[]
+                }
+              />
+            }
             colorClass="group-hover:text-red-400"
             icon={<CalendarIcon />}
           />
           <EmailCard
             card={{ id: "tracking", title: "Tracking" }}
-            emailItems={emails.filter(email => email.type === EmailType.Tracking)}
-            body={<TrackingCardItems trackingItems={emails.filter(email => email.type === EmailType.Tracking) as TrackingEmail[]} />}
+            emailItems={emails.filter(
+              (email) => email.type === EmailType.Tracking,
+            )}
+            body={
+              <TrackingCardItems
+                trackingItems={
+                  emails.filter(
+                    (email) => email.type === EmailType.Tracking,
+                  ) as TrackingEmail[]
+                }
+              />
+            }
             colorClass="group-hover:text-blue-500"
             icon={<LoadingIcon />}
           />
         </div>
       </div>
-        {"document" in window &&
-          createPortal(
-            <DragOverlay>
-              {/* {activeColumn && (
+      {"document" in window &&
+        createPortal(
+          <DragOverlay>
+            {/* {activeColumn && (
                 <BoardColumn
                   isOverlay
                   column={activeColumn}
@@ -197,23 +240,24 @@ export default function Home() {
                   )}
                 />
               )} */}
-              {activeEmail && ( activeEmail.type === EmailType.Summary || activeEmail.type === EmailType.Todo ) &&
-                <EmailRow 
-                  email={activeEmail} 
+            {activeEmail &&
+              (activeEmail.type === EmailType.Summary ||
+                activeEmail.type === EmailType.Todo) && (
+                <EmailRow
+                  email={activeEmail}
                   sender={activeEmail.sender || ""}
                   title={activeEmail.title || ""}
                   gapClass={"gap-[40px]"}
                   actions={["view", "edit"]}
-                  isOverlay 
+                  isOverlay
                 />
-              }
-            </DragOverlay>,
-            document.body
+              )}
+          </DragOverlay>,
+          document.body,
         )}
     </DndContext>
   );
 }
-
 
 // todo:
 // - add dragg drop
