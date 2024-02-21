@@ -47,8 +47,10 @@ export function EmailRow({
   const variants = cva("", {
     variants: {
       dragging: {
-        over: "ring-2 opacity-30",
-        overlay: "ring-2 ring-primary",
+        // style of the email row that is overlaying the actual position
+        over: "ring-2 opacity-30 bg-blue-400",
+        // style of the email row that is currenlt being dragged
+        overlay: "ring-2 ring-primary bg-red-400",
       },
     },
   });
