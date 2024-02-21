@@ -1,3 +1,5 @@
+import { UniqueIdentifier } from "@dnd-kit/core";
+
 export function SimpleRow({
   title,
   label,
@@ -5,7 +7,7 @@ export function SimpleRow({
 }: {
   title: string;
   label: string;
-  id: string;
+  id: UniqueIdentifier;
 }) {
   return (
     <div className="flex flex-row justify-between items-center w-full">

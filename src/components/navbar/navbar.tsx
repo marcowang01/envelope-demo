@@ -1,16 +1,16 @@
-import { NavbarItem } from "./navbarItem";
+import { NavbarItem } from "../navbar/navbarItem";
 import { HomeIcon } from "@/assets/home-icon";
 import { GearIcon } from "@/assets/gear-icon";
-import { SearchBar } from "./searchBar";
+import { SearchBar } from "../navbar/searchBar";
+import Link from "next/link";
 
 export function Navbar() {
-  const searchBar = () => {
-    return <input></input>;
-  };
 
   return (
     <div className="flex flex-row gap-3 ">
-      <NavbarItem icon={<HomeIcon />} hoverClass={"hover:text-green-400"} />
+      <Link href={"/"}>
+        <NavbarItem icon={<HomeIcon />} hoverClass={"hover:text-green-400"} />
+      </Link>
       <SearchBar />
       <NavbarItem
         text={"newsletter"}

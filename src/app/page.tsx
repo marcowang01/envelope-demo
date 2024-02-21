@@ -16,7 +16,7 @@ import {
 } from "@dnd-kit/core";
 import { createPortal } from "react-dom";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import { Card, EmailCard } from "@/components/card";
+import { Card, EmailCard } from "@/components/home/card";
 import {
   summaryEmails,
   todos,
@@ -28,16 +28,16 @@ import {
   CalendarEmail,
   TrackingEmail,
 } from "@/data/emails";
-import { SummaryCardItems } from "@/components/summaryCardItems";
-import { CalendarCardItems } from "@/components/calendarCardItems";
-import { TodoCardItems } from "@/components/todoCardItems";
-import { TrackingCardItems } from "@/components/trackingCardItems";
+import { SummaryCardItems } from "@/components/home/summaryCardItems";
+import { CalendarCardItems } from "@/components/home/calendarCardItems";
+import { TodoCardItems } from "@/components/home/todoCardItems";
+import { TrackingCardItems } from "@/components/home/trackingCardItems";
 import { Email } from "@/data/emails";
 import { useState } from "react";
-import { LoadingIcon } from "@/components/trackingCardItems";
+import { LoadingIcon } from "@/components/home/trackingCardItems";
 import { CalendarIcon } from "@/assets/calendar-icon";
 import { PencilIcon } from "@/assets/pencil-icon";
-import { EmailRow } from "@/components/emailRow";
+import { EmailRow } from "@/components/home/emailRow";
 
 const defaultCards = [
   { id: "summary", title: "While you were gone..." },

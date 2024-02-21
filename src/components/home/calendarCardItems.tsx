@@ -1,7 +1,7 @@
-import { Card } from "./card";
+import { Card } from "../home/card";
 import { CalendarEmail } from "@/data/emails";
 import { CalendarIcon } from "@/assets/calendar-icon";
-import { SimpleRow } from "./simpleRow";
+import { SimpleRow } from "../home/simpleRow";
 import clsx from "clsx";
 
 export function CalendarCardItems({
