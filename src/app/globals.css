@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 254, 254, 254;
 }
 
 body {
@@ -33,6 +33,14 @@ body {
   }
 }
 
+.shadow-border-pink {
+  box-shadow: 0 0 0 1px #FFF2F2;
+}
+
+.shadow-border-gray {
+  box-shadow: 0 0 0 1px #CCCCCC;
+}
+
 /* Still in your global CSS file */
 .group:hover .group-hover-spin {
   animation: spin 1s linear infinite;
@@ -58,3 +66,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ccc;
 }
+

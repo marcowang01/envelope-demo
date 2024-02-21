@@ -20,7 +20,7 @@ export function FlightCard(props: FlightCardProps) {
   const { arrivalAirport, arrivalCity, departureAirport, departureCity, flightNumber, seat, boardGroup, passengerName, recordLocator, textColor, highlightColor } = props;
 
   return (
-    <div className="flex flex-col justify-between grow">
+    <div className="flex flex-col grow">
       <div className="flex flex-row justify-between items-center mt-[14px]">
         <BookingCardTitle
           title={departureCity}

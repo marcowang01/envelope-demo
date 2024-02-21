@@ -17,7 +17,7 @@ export function RestaurantCard(props: RestaurantCardProps) {
   const { restaurantName, bookingSize, address, bookingDate, bookingTime, textColor, highlightColor } = props;
 
   return (
-    <div className="flex flex-col justify-between grow">
+    <div className="flex flex-col grow">
       <div className="flex flex-row justify-between items-center mt-[14px]">
         <BookingCardTitle
           title="restaurant"
@@ -30,20 +30,6 @@ export function RestaurantCard(props: RestaurantCardProps) {
         <BookingCardLabel
           label="size"
           content={bookingSize}
-          textColor={textColor}
-          highlightColor={highlightColor}
-        />
-        <BookingCardLabel
-          label="time"
-          content={bookingTime}
-          textColor={textColor}
-          highlightColor={highlightColor}
-        />
-      </div>
-      <div className="mt-[8px]">
-        <BookingCardLabel
-          label="date"
-          content={bookingDate}
           textColor={textColor}
           highlightColor={highlightColor}
         />

@@ -20,7 +20,10 @@ export function BookingCardTitle(
       <div className={clsx("text-[6px] leading-[7px] font-normal uppercase", textColor)}>
         {title}
       </div>
-      <div className={clsx("text-[20px] leading-[23px] font-normal uppercase", highlightColor)}>
+      <div className={clsx(" font-normal uppercase ", highlightColor, {
+        "text-[18px] leading-[23px] mt-[2px]": content.length <= 10,
+        "text-[16px] leading-[18px]": content.length > 10,
+      })}>
         {content}
       </div>
     </div>

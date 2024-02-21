@@ -20,7 +20,7 @@ export function BookingCardLabel(
       <div className={clsx("text-[6px] leading-[7px] font-normal uppercase", textColor)}>
         {label}
       </div>
-      <div className={clsx("text-[10px] leading-[11px] font-normal", highlightColor)}>
+      <div className={clsx("text-[10px] leading-[11px] font-normal mt-[2px]", highlightColor)}>
         {content}
       </div>
     </div>
