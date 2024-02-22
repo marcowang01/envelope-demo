@@ -55,8 +55,21 @@ export function EmailCard({
     data: payload,
   });
 
+  const onMouseEnter = () => {
+    console.log("onMouseEnter");
+  }
+
+  const onMouseLeave = () => {
+    console.log("onMouseLeave");
+  }
+
   return (
-    <div ref={setNodeRef} className="group w-full">
+    <div 
+      ref={setNodeRef} 
+      className="group w-full"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div
         className={clsx(
           "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px] text-gray-500",

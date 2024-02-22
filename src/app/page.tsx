@@ -63,6 +63,8 @@ export default function Home() {
   const [emails, setEmails] = useState<Email[]>(initialEmails);
   const [activeEmail, setActiveEmail] = useState<Email | null>(null);
   const [activeCard, setActiveCard] = useState<Card | null>(null);
+  const [originalType, setOriginalType] = useState<EmailType | null>(null);
+  const [originalIndex, setOriginalIndex] = useState<number>(0);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -79,12 +81,18 @@ export default function Home() {
 
     if (data) {
       setActiveEmail(data.email);
+      setOriginalType(emailType);
+      setOriginalIndex(
+        emails.findIndex((email) => email.id === data.email.id),
+      );
     }
   }
 
   function onDragEnd(event: DragEndEvent) {
     setActiveEmail(null);
     setActiveCard(null);
+    setOriginalType(null);
+    setOriginalIndex(0);
 
     const { active, over } = event;
     
@@ -125,7 +133,9 @@ export default function Home() {
 
     if (!isActiveAnEmail) return;
 
-    if (!dragOverIsValid(activeData as EmailDragData, overData as EmailDragData | EmailCardDragData)) return;
+    if (!originalType) return;
+
+    if (!dragOverIsValid(originalType, overData as EmailDragData | EmailCardDragData)) return;
 
     // Im dropping a email over another email
     if (isActiveAnEmail && isOverAnEmail) {
@@ -138,21 +148,25 @@ export default function Home() {
         const activeEmail = emails[activeIndex];
         const overEmail = emails[overIndex];
 
-        if (overEmail && !overEmail.active) {
-          activeEmail.active = false;
-          return emails;
+        // for summary card and emails return to original position
+        if (activeEmail.type === EmailType.Summary && overEmail.type === EmailType.Summary) {
+          return arrayMove(emails, activeIndex, originalIndex);
         }
+
 
         if (activeEmail && overEmail && activeEmail.type !== overEmail.type) {
           activeEmail.type = overEmail.type;
+          activeEmail.active = true;
           return arrayMove(emails, activeIndex, overIndex - 1);
         }
 
+
+        activeEmail.active = true;
         return arrayMove(emails, activeIndex, overIndex);
       });
     }
 
-    const isOverACard = overData?.type === "card";
+    const isOverACard = Object.values(CardType).includes(overData?.type);
 
     // Im dropping a email over a Card
     if (isActiveAnEmail && isOverACard) {
@@ -160,18 +174,29 @@ export default function Home() {
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const activeEmail = emails[activeIndex];
+          console.log("activeEmail.active", activeEmail.active);
+
 
         if (over.id === CardType.Seen) {
           activeEmail.active = false;
-          return emails;
+          
+          return emails
+        }
+        // for summary card and emails return to original position
+        if (originalType === EmailType.Summary && overData?.card.id === CardType.Summary) {
+          activeEmail.active = true;
+          activeEmail.type = EmailType.Summary;
+          return arrayMove(emails, activeIndex, originalIndex);
         }
 
-        if (activeEmail) {
+        if (activeEmail && overData) {
+          activeEmail.active = true;
           activeEmail.type = overData.card.id.split("-")[1] as EmailType;
           return arrayMove(emails, activeIndex, activeIndex);
         }
 
-        return emails;
+        activeEmail.active = true;
+        return emails
       });
     }
   }
@@ -268,7 +293,7 @@ export default function Home() {
                   )}
                 />
               )} */}
-            {activeEmail &&
+            {activeEmail && 
               (activeEmail.type === EmailType.Summary ||
                 activeEmail.type === EmailType.Todo) && (
                 <EmailRow

@@ -23,31 +23,28 @@ export function formatDate(date: Date): string {
   return formattedDate.replace(/\d+/, `$&${suffix}`);
 }
 
-
 export function dragOverIsValid(
-  activeData: EmailDragData,
-  overData: EmailCardDragData | EmailDragData,
+  activeDataType: EmailType,
+  overData: EmailCardDragData | EmailDragData
 ): boolean {
   // always allow dragging over seen card
   if (overData.type === CardType.Seen) {
-    return true
+    return true;
   }
 
   // summary emails can only be dragged over todo card, todo email
-  if (activeData.type === EmailType.Summary) {
+  if (activeDataType === EmailType.Summary) {
     return (
       overData.type === CardType.Todo ||
-      overData.type === EmailType.Todo
+      overData.type === EmailType.Todo ||
+      overData.type === CardType.Summary
     );
   }
 
   // to-do emails can only be dragged over todo email, todo card,
-  if (activeData.type === EmailType.Todo) {
-    return (
-      overData.type === CardType.Todo || overData.type === EmailType.Todo
-    );
+  if (activeDataType === EmailType.Todo) {
+    return overData.type === CardType.Todo || overData.type === EmailType.Todo;
   }
 
-
-  return false
+  return false;
 }
