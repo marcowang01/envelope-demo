@@ -228,7 +228,7 @@ export default function Home() {
           />
         </div>
       </div>
-      {"document" in window &&
+      {typeof window !== "undefined" && "document" in window &&
         createPortal(
           <DragOverlay>
             {/* {activeColumn && (
@@ -260,6 +260,5 @@ export default function Home() {
 }
 
 // todo:
-// - add dragg drop
-// - use vh + ratio instead of absolute heights for the three panel
-//    - but always keep 4:3:2 ratio and also have exact row heights
+// - add drag drop style
+// - add autocomplete for email
