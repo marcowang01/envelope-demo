@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
@@ -9,9 +9,13 @@ import { CardType, EmailCardDragData } from "./emailCard";
 import { EmailRow } from "./emailRow";
 import clsx from "clsx";
 
-export function SeenIconDroppable(
-  { emailItems, colorClass }: { emailItems: Email[], colorClass: string }
-) {
+export function SeenIconDroppable({
+  emailItems,
+  colorClass,
+}: {
+  emailItems: Email[];
+  colorClass: string;
+}) {
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
   }, [emailItems]);
@@ -21,7 +25,7 @@ export function SeenIconDroppable(
     card: {
       id: CardType.Seen,
       title: "Seen",
-    }
+    },
   };
 
   const { setNodeRef } = useDroppable({
@@ -29,10 +33,12 @@ export function SeenIconDroppable(
     data: payload,
   });
 
-
   return (
-    <div 
-      className={clsx("fixed left-[calc(50% - 30px)] bottom-[50px] z-20", colorClass)}
+    <div
+      className={clsx(
+        "fixed left-[calc(50% - 30px)] bottom-[50px] z-20",
+        colorClass,
+      )}
       ref={setNodeRef}
     >
       <SortableContext items={emailIds}>
@@ -48,8 +54,7 @@ export function SeenIconDroppable(
               actions={[]}
             />
           );})} */}
-
       </SortableContext>
     </div>
-  )
+  );
 }

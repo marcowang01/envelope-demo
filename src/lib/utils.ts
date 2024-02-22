@@ -25,7 +25,7 @@ export function formatDate(date: Date): string {
 
 export function dragOverIsValid(
   activeDataType: EmailType,
-  overData: EmailCardDragData | EmailDragData
+  overData: EmailCardDragData | EmailDragData,
 ): boolean {
   // always allow dragging over seen card
   if (overData.type === CardType.Seen) {

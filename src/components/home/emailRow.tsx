@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { CheckIcon } from "@/assets/check-icon";
 import { EyeIcon } from "@/assets/eye-icon";
@@ -15,7 +15,7 @@ import { EmailType } from "@/data/emails";
 export interface EmailDragData {
   type: EmailType;
   email: Email;
-};
+}
 
 export function EmailRow({
   email,
@@ -32,7 +32,6 @@ export function EmailRow({
   actions: string[];
   isOverlay?: boolean;
 }) {
-
   const payload: EmailDragData = {
     type: email.type,
     email: email,
@@ -47,7 +46,7 @@ export function EmailRow({
     isDragging,
   } = useSortable({
     id: email.id,
-    data: payload
+    data: payload,
   });
 
   const style = {
@@ -84,23 +83,40 @@ export function EmailRow({
       <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]">
         {sender}
       </div>
-      <div className={clsx("flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer",{
-        "grow": !isOverlay,
-      })}>
-        <div className={clsx({
-          "grow": !isOverlay,
-        })}>{title}</div>
+      <div
+        className={clsx(
+          "flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer",
+          {
+            grow: !isOverlay,
+          },
+        )}
+      >
+        <div
+          className={clsx({
+            grow: !isOverlay,
+          })}
+        >
+          {title}
+        </div>
         {email.type === "summary" && (
-          <div className={clsx({
-            "hidden": isOverlay,
-          })}>{formatDate(new Date(email.date))}</div>
+          <div
+            className={clsx({
+              hidden: isOverlay,
+            })}
+          >
+            {formatDate(new Date(email.date))}
+          </div>
         )}
       </div>
 
-      <div className={clsx("flex flex-row justify-start gap-[20px] items-center ",{
-        "hidden": isOverlay
-      
-      })}>
+      <div
+        className={clsx(
+          "flex flex-row justify-start gap-[20px] items-center ",
+          {
+            hidden: isOverlay,
+          },
+        )}
+      >
         {actions.includes("view") && (
           <div className="cursor-pointer hover:text-gray-800 active:text-gray-500 w-[20px]">
             <EyeIcon />

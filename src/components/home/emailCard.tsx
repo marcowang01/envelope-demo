@@ -44,7 +44,6 @@ export function EmailCard({
   isDragging: boolean;
   icon?: ReactNode;
 }) {
-  
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
   }, [emailItems]);
@@ -54,16 +53,14 @@ export function EmailCard({
     card: card,
   };
 
-  const { 
-    setNodeRef,
-   } = useDroppable({
+  const { setNodeRef } = useDroppable({
     id: card.id,
     data: payload,
   });
 
   return (
-    <div 
-      ref={setNodeRef} 
+    <div
+      ref={setNodeRef}
       className={clsx("group w-full", {
         "opacity-50": isDragging,
       })}
@@ -71,7 +68,7 @@ export function EmailCard({
       <div
         className={clsx(
           "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]",
-          titleColorClass ? titleColorClass : "text-gray-450"
+          titleColorClass ? titleColorClass : "text-gray-450",
         )}
       >
         {icon && <div className="w-[20px]">{icon}</div>}

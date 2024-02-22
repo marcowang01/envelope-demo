@@ -16,7 +16,12 @@ import {
 } from "@dnd-kit/core";
 import { createPortal } from "react-dom";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import { Card, EmailCard, CardType, EmailCardDragData } from "@/components/home/emailCard";
+import {
+  Card,
+  EmailCard,
+  CardType,
+  EmailCardDragData,
+} from "@/components/home/emailCard";
 import {
   summaryEmails,
   todos,
@@ -56,8 +61,6 @@ const initialEmails: Email[] = [
   ...trackingItems,
 ];
 
-
-
 export default function Home() {
   const [emails, setEmails] = useState<Email[]>(initialEmails);
   const [activeEmail, setActiveEmail] = useState<Email | null>(null);
@@ -82,9 +85,7 @@ export default function Home() {
     if (data) {
       setActiveEmail(data.email);
       setOriginalType(emailType);
-      setOriginalIndex(
-        emails.findIndex((email) => email.id === data.email.id),
-      );
+      setOriginalIndex(emails.findIndex((email) => email.id === data.email.id));
     }
 
     setIsDragging(true);
@@ -98,7 +99,7 @@ export default function Home() {
     setIsDragging(false);
 
     const { active, over } = event;
-    
+
     if (!over) return;
 
     const activeId = active.id;
@@ -107,14 +108,13 @@ export default function Home() {
     console.log("activeId", activeId);
     console.log("overId", overId);
 
-
     if (overId === CardType.Seen) {
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const activeEmail = emails[activeIndex];
         activeEmail.active = false;
         return emails;
-      })
+      });
     }
 
     if (activeId === overId) return;
@@ -149,15 +149,21 @@ export default function Home() {
       return;
     }
 
-    if (!dragOverIsValid(originalType, overData as EmailDragData | EmailCardDragData)) {
+    if (
+      !dragOverIsValid(
+        originalType,
+        overData as EmailDragData | EmailCardDragData,
+      )
+    ) {
       console.log("invalid drop");
       return;
     }
 
     // Im dropping a email over another email
     if (isActiveAnEmail && isOverAnEmail) {
-
-      console.log(`E: ${activeData?.email.type} email over  ${overData?.email.type} ${overData?.email.sender} email`);
+      console.log(
+        `E: ${activeData?.email.type} email over  ${overData?.email.type} ${overData?.email.sender} email`,
+      );
 
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
@@ -166,16 +172,17 @@ export default function Home() {
         const overEmail = emails[overIndex];
 
         // for summary card and emails return to original position
-        if (activeEmail.type === EmailType.Summary && overEmail.type === EmailType.Summary) {
+        if (
+          activeEmail.type === EmailType.Summary &&
+          overEmail.type === EmailType.Summary
+        ) {
           return arrayMove(emails, activeIndex, originalIndex);
         }
-
 
         if (activeEmail && overEmail && activeEmail.type !== overEmail.type) {
           activeEmail.type = overEmail.type;
           return arrayMove(emails, activeIndex, overIndex - 1);
         }
-
 
         return arrayMove(emails, activeIndex, overIndex);
       });
@@ -185,20 +192,22 @@ export default function Home() {
 
     // Im dropping a email over a Card
     if (isActiveAnEmail && isOverACard) {
-      console.log(`C: ${activeData?.email.type} email over ${overData?.card.id} card `);
+      console.log(
+        `C: ${activeData?.email.type} email over ${overData?.card.id} card `,
+      );
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const activeEmail = emails[activeIndex];
         console.log("activeEmail.active", activeEmail.active);
 
-
         if (over.id === CardType.Seen) {
-
-          
-          return emails
+          return emails;
         }
         // for summary card and emails return to original position
-        if (originalType === EmailType.Summary && overData?.card.id === CardType.Summary) {
+        if (
+          originalType === EmailType.Summary &&
+          overData?.card.id === CardType.Summary
+        ) {
           activeEmail.type = EmailType.Summary;
           return arrayMove(emails, activeIndex, originalIndex);
         }
@@ -208,7 +217,7 @@ export default function Home() {
           return arrayMove(emails, activeIndex, activeIndex);
         }
 
-        return emails
+        return emails;
       });
     }
   }
@@ -236,7 +245,10 @@ export default function Home() {
                 }
               />
             }
-            isDragging={isDraggging && !(overType === CardType.Summary || overType === EmailType.Summary)}
+            isDragging={
+              isDraggging &&
+              !(overType === CardType.Summary || overType === EmailType.Summary)
+            }
           />
         </div>
         <div className="w-2/5">
@@ -252,8 +264,15 @@ export default function Home() {
                 }
               />
             }
-            isDragging={isDraggging && !(overType === CardType.Todo || overType === EmailType.Todo)}
-            titleColorClass={overType === CardType.Todo || overType === EmailType.Todo ? "text-yellow-400" : "text-gray-450 group-hover:text-yellow-400"}
+            isDragging={
+              isDraggging &&
+              !(overType === CardType.Todo || overType === EmailType.Todo)
+            }
+            titleColorClass={
+              overType === CardType.Todo || overType === EmailType.Todo
+                ? "text-yellow-400"
+                : "text-gray-450 group-hover:text-yellow-400"
+            }
             icon={<PencilIcon />}
           />
           <EmailCard
@@ -265,13 +284,24 @@ export default function Home() {
               <CalendarCardItems
                 calendarEvents={
                   emails.filter(
-                    (email) => email.type === EmailType.Calendar && email.active,
+                    (email) =>
+                      email.type === EmailType.Calendar && email.active,
                   ) as CalendarEmail[]
                 }
               />
             }
-            isDragging={isDraggging && !(overType === CardType.Calendar || overType === EmailType.Calendar)}
-            titleColorClass={overType === CardType.Calendar || overType === EmailType.Calendar ? "text-red-400" : "text-gray-450 group-hover:text-red-400"}
+            isDragging={
+              isDraggging &&
+              !(
+                overType === CardType.Calendar ||
+                overType === EmailType.Calendar
+              )
+            }
+            titleColorClass={
+              overType === CardType.Calendar || overType === EmailType.Calendar
+                ? "text-red-400"
+                : "text-gray-450 group-hover:text-red-400"
+            }
             icon={<CalendarIcon />}
           />
           <EmailCard
@@ -283,22 +313,40 @@ export default function Home() {
               <TrackingCardItems
                 trackingItems={
                   emails.filter(
-                    (email) => email.type === EmailType.Tracking && email.active,
+                    (email) =>
+                      email.type === EmailType.Tracking && email.active,
                   ) as TrackingEmail[]
                 }
               />
             }
-            isDragging={isDraggging && !(overType === CardType.Tracking || overType === EmailType.Tracking)}
-            titleColorClass={overType === CardType.Tracking || overType === EmailType.Tracking ? "text-blue-500" : "text-gray-450 group-hover:text-blue-500"}
+            isDragging={
+              isDraggging &&
+              !(
+                overType === CardType.Tracking ||
+                overType === EmailType.Tracking
+              )
+            }
+            titleColorClass={
+              overType === CardType.Tracking || overType === EmailType.Tracking
+                ? "text-blue-500"
+                : "text-gray-450 group-hover:text-blue-500"
+            }
             icon={<LoadingIcon />}
           />
         </div>
-        <SeenIconDroppable 
+        <SeenIconDroppable
           emailItems={emails.filter((email) => email.active === false)}
-          colorClass={isDraggging ? (overType === CardType.Seen ? "opacity-70" : "opacity-100") : "opacity-0"}
+          colorClass={
+            isDraggging
+              ? overType === CardType.Seen
+                ? "opacity-70"
+                : "opacity-100"
+              : "opacity-0"
+          }
         />
       </div>
-      {typeof window !== "undefined" && "document" in window &&
+      {typeof window !== "undefined" &&
+        "document" in window &&
         createPortal(
           <DragOverlay>
             {/* {activeColumn && (
@@ -310,7 +358,7 @@ export default function Home() {
                   )}
                 />
               )} */}
-            {activeEmail && 
+            {activeEmail &&
               (activeEmail.type === EmailType.Summary ||
                 activeEmail.type === EmailType.Todo) && (
                 <EmailRow
