@@ -62,6 +62,7 @@ export function EmailRow({
         over: "opacity-30 bg-gray-100",
         // style of the email row that is currenlt being dragged
         overlay: "bg-gray-100",
+        default: "w-full",
       },
     },
   });
@@ -70,10 +71,10 @@ export function EmailRow({
     <div
       ref={setNodeRef}
       className={clsx(
-        "group/row italic text-gray-450  flex flex-row font-xl w-full cursor-grab py-[10px] rounded-[10px]",
+        "group/row italic text-gray-450  flex flex-row font-xl cursor-grab py-[10px] rounded-[10px]",
         gapClass,
         variants({
-          dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
+          dragging: isOverlay ? "overlay" : isDragging ? "over" : "default",
         }),
       )}
       // style={style}

@@ -37,7 +37,8 @@ export function dragOverIsValid(
     return (
       overData.type === CardType.Todo ||
       overData.type === EmailType.Todo ||
-      overData.type === CardType.Summary
+      overData.type === CardType.Summary ||
+      overData.type === EmailType.Summary
     );
   }
 

@@ -44,7 +44,7 @@ export function EmailCard({
   isDragging: boolean;
   icon?: ReactNode;
 }) {
-
+  
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
   }, [emailItems]);
@@ -60,7 +60,6 @@ export function EmailCard({
     id: card.id,
     data: payload,
   });
-
 
   return (
     <div 
