@@ -18,6 +18,7 @@ export function SearchBar() {
     } else {
       router.push(`/`);
     }
+    setSearchInput("");
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -49,7 +50,7 @@ export function SearchBar() {
         </div>
         {searchInput && (
           <>
-            <div className="w-full h-[1px] bg-gray-350 my-2 mt-4" />
+            <div className="w-full h-[1px] bg-gray-350 my-2 mt-4 hidden group-focus-within:block" />
             <ul className="top-[58px] list-none w-full max-h-60 overflow-auto rounded-lg">
               {filteredSuggestions.map((suggestion, index) => (
                 <li
