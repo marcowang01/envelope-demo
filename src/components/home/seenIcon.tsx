@@ -7,9 +7,10 @@ import { useMemo } from "react";
 import { Email } from "@/data/emails";
 import { CardType, EmailCardDragData } from "./emailCard";
 import { EmailRow } from "./emailRow";
+import clsx from "clsx";
 
 export function SeenIconDroppable(
-  { emailItems }: { emailItems: Email[] }
+  { emailItems, colorClass }: { emailItems: Email[], colorClass: string }
 ) {
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
@@ -31,7 +32,7 @@ export function SeenIconDroppable(
 
   return (
     <div 
-      className="fixed left-[calc(50% - 30px)] bottom-[50px] z-20"
+      className={clsx("fixed left-[calc(50% - 30px)] bottom-[50px] z-20", colorClass)}
       ref={setNodeRef}
     >
       <SortableContext items={emailIds}>

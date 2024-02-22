@@ -9,6 +9,7 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 import { Email } from "@/data/emails";
+import { useState } from "react";
 
 export interface Card {
   id: UniqueIdentifier;
@@ -32,15 +33,18 @@ export function EmailCard({
   card,
   emailItems,
   body,
-  colorClass,
+  titleColorClass,
+  isDragging,
   icon,
 }: {
   card: Card;
   emailItems: Email[];
   body: ReactNode;
-  colorClass?: string;
+  titleColorClass?: string;
+  isDragging: boolean;
   icon?: ReactNode;
 }) {
+
   const emailIds = useMemo(() => {
     return emailItems.map((email) => email.id);
   }, [emailItems]);
@@ -50,30 +54,25 @@ export function EmailCard({
     card: card,
   };
 
-  const { setNodeRef } = useDroppable({
+  const { 
+    setNodeRef,
+   } = useDroppable({
     id: card.id,
     data: payload,
   });
 
-  const onMouseEnter = () => {
-    console.log("onMouseEnter");
-  }
-
-  const onMouseLeave = () => {
-    console.log("onMouseLeave");
-  }
 
   return (
     <div 
       ref={setNodeRef} 
-      className="group w-full"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className={clsx("group w-full", {
+        "opacity-50": isDragging,
+      })}
     >
       <div
         className={clsx(
-          "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px] text-gray-500",
-          colorClass,
+          "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]",
+          titleColorClass ? titleColorClass : "text-gray-450"
         )}
       >
         {icon && <div className="w-[20px]">{icon}</div>}

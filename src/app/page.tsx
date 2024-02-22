@@ -59,12 +59,12 @@ const initialEmails: Email[] = [
 
 
 export default function Home() {
-  const [cards, setCards] = useState<Card[]>(defaultCards);
   const [emails, setEmails] = useState<Email[]>(initialEmails);
   const [activeEmail, setActiveEmail] = useState<Email | null>(null);
-  const [activeCard, setActiveCard] = useState<Card | null>(null);
   const [originalType, setOriginalType] = useState<EmailType | null>(null);
   const [originalIndex, setOriginalIndex] = useState<number>(0);
+  const [overType, setOverType] = useState<EmailType | CardType | null>(null);
+  const [isDraggging, setIsDragging] = useState<boolean>(false);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -86,13 +86,16 @@ export default function Home() {
         emails.findIndex((email) => email.id === data.email.id),
       );
     }
+
+    setIsDragging(true);
   }
 
   function onDragEnd(event: DragEndEvent) {
     setActiveEmail(null);
-    setActiveCard(null);
     setOriginalType(null);
     setOriginalIndex(0);
+    setOverType(null);
+    setIsDragging(false);
 
     const { active, over } = event;
     
@@ -100,6 +103,9 @@ export default function Home() {
 
     const activeId = active.id;
     const overId = over.id;
+
+    console.log("activeId", activeId);
+    console.log("overId", overId);
 
 
     if (overId === CardType.Seen) {
@@ -121,6 +127,8 @@ export default function Home() {
     const activeId = active.id;
     const overId = over.id;
 
+    setOverType(over.data.current?.type);
+
     if (activeId === overId) return;
 
     // if (!hasDraggableData(active) || !hasDraggableData(over)) return;
@@ -131,11 +139,20 @@ export default function Home() {
     const isActiveAnEmail = Object.values(EmailType).includes(activeData?.type);
     const isOverAnEmail = Object.values(EmailType).includes(overData?.type);
 
-    if (!isActiveAnEmail) return;
+    if (!isActiveAnEmail) {
+      console.log("not active email", activeData?.type);
+      return;
+    }
 
-    if (!originalType) return;
+    if (!originalType) {
+      console.log("no original type");
+      return;
+    }
 
-    if (!dragOverIsValid(originalType, overData as EmailDragData | EmailCardDragData)) return;
+    if (!dragOverIsValid(originalType, overData as EmailDragData | EmailCardDragData)) {
+      console.log("invalid drop");
+      return;
+    }
 
     // Im dropping a email over another email
     if (isActiveAnEmail && isOverAnEmail) {
@@ -156,12 +173,10 @@ export default function Home() {
 
         if (activeEmail && overEmail && activeEmail.type !== overEmail.type) {
           activeEmail.type = overEmail.type;
-          activeEmail.active = true;
           return arrayMove(emails, activeIndex, overIndex - 1);
         }
 
 
-        activeEmail.active = true;
         return arrayMove(emails, activeIndex, overIndex);
       });
     }
@@ -174,28 +189,25 @@ export default function Home() {
       setEmails((emails) => {
         const activeIndex = emails.findIndex((t) => t.id === activeId);
         const activeEmail = emails[activeIndex];
-          console.log("activeEmail.active", activeEmail.active);
+        console.log("activeEmail.active", activeEmail.active);
 
 
         if (over.id === CardType.Seen) {
-          activeEmail.active = false;
+
           
           return emails
         }
         // for summary card and emails return to original position
         if (originalType === EmailType.Summary && overData?.card.id === CardType.Summary) {
-          activeEmail.active = true;
           activeEmail.type = EmailType.Summary;
           return arrayMove(emails, activeIndex, originalIndex);
         }
 
         if (activeEmail && overData) {
-          activeEmail.active = true;
           activeEmail.type = overData.card.id.split("-")[1] as EmailType;
           return arrayMove(emails, activeIndex, activeIndex);
         }
 
-        activeEmail.active = true;
         return emails
       });
     }
@@ -224,6 +236,7 @@ export default function Home() {
                 }
               />
             }
+            isDragging={isDraggging && !(overType === CardType.Summary || overType === EmailType.Summary)}
           />
         </div>
         <div className="w-2/5">
@@ -239,7 +252,8 @@ export default function Home() {
                 }
               />
             }
-            colorClass="group-hover:text-yellow-400"
+            isDragging={isDraggging && !(overType === CardType.Todo || overType === EmailType.Todo)}
+            titleColorClass={overType === CardType.Todo || overType === EmailType.Todo ? "text-yellow-400" : ""}
             icon={<PencilIcon />}
           />
           <EmailCard
@@ -256,7 +270,8 @@ export default function Home() {
                 }
               />
             }
-            colorClass="group-hover:text-red-400"
+            isDragging={isDraggging && !(overType === CardType.Calendar || overType === EmailType.Calendar)}
+            titleColorClass={overType === CardType.Calendar || overType === EmailType.Calendar ? "text-red-400" : ""}
             icon={<CalendarIcon />}
           />
           <EmailCard
@@ -273,12 +288,14 @@ export default function Home() {
                 }
               />
             }
-            colorClass="group-hover:text-blue-500"
+            isDragging={isDraggging && !(overType === CardType.Tracking || overType === EmailType.Tracking)}
+            titleColorClass={overType === CardType.Tracking || overType === EmailType.Tracking ? "text-blue-500" : ""}
             icon={<LoadingIcon />}
           />
         </div>
         <SeenIconDroppable 
           emailItems={emails.filter((email) => email.active === false)}
+          colorClass={isDraggging ? (overType === CardType.Seen ? "opacity-70" : "opacity-100") : "opacity-0"}
         />
       </div>
       {typeof window !== "undefined" && "document" in window &&
@@ -313,5 +330,4 @@ export default function Home() {
 }
 
 // todo:
-// - add drag drop style
-// - add autocomplete for email
+// - not display when dragging
