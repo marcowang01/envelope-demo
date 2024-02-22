@@ -59,9 +59,9 @@ export function EmailRow({
     variants: {
       dragging: {
         // style of the email row that is overlaying the actual position
-        over: "opacity-30 bg-gray-100",
+        over: "opacity-100 bg-gray-300 text-black",
         // style of the email row that is currenlt being dragged
-        overlay: "bg-gray-100",
+        overlay: "bg-gray-100 w-[500px] px-[20px]",
         default: "w-full",
       },
     },
@@ -84,7 +84,9 @@ export function EmailRow({
       <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]">
         {sender}
       </div>
-      <div className={clsx("grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer")}>
+      <div className={clsx("flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer",{
+        "grow": !isOverlay,
+      })}>
         <div className={clsx({
           "grow": !isOverlay,
         })}>{title}</div>
