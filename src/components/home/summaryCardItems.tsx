@@ -8,7 +8,7 @@ export function SummaryCardItems({
   summaryEmails: SummaryEmail[];
 }) {
   return (
-    <div className="flex flex-col gap-[20px] w-full mt-[30px]">
+    <div className="flex flex-col w-full mt-[20px]">
       {summaryEmails.map((email, index) => {
         return (
           <EmailRow

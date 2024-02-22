@@ -59,9 +59,9 @@ export function EmailRow({
     variants: {
       dragging: {
         // style of the email row that is overlaying the actual position
-        over: "ring-2 opacity-30 bg-blue-400",
+        over: "opacity-30 bg-gray-100",
         // style of the email row that is currenlt being dragged
-        overlay: "ring-2 ring-primary bg-red-400",
+        overlay: "bg-gray-100",
       },
     },
   });
@@ -70,7 +70,7 @@ export function EmailRow({
     <div
       ref={setNodeRef}
       className={clsx(
-        "group/row italic text-gray-450  flex flex-row font-xl w-full cursor-grab",
+        "group/row italic text-gray-450  flex flex-row font-xl w-full cursor-grab py-[10px] rounded-[10px]",
         gapClass,
         variants({
           dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
@@ -83,14 +83,21 @@ export function EmailRow({
       <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]">
         {sender}
       </div>
-      <div className="grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer">
-        <div className="grow ">{title}</div>
+      <div className={clsx("grow flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer")}>
+        <div className={clsx({
+          "grow": !isOverlay,
+        })}>{title}</div>
         {email.type === "summary" && (
-          <div>{formatDate(new Date(email.date))}</div>
+          <div className={clsx({
+            "hidden": isOverlay,
+          })}>{formatDate(new Date(email.date))}</div>
         )}
       </div>
 
-      <div className="flex flex-row justify-start gap-[20px] items-center ">
+      <div className={clsx("flex flex-row justify-start gap-[20px] items-center ",{
+        "hidden": isOverlay
+      
+      })}>
         {actions.includes("view") && (
           <div className="cursor-pointer hover:text-gray-800 active:text-gray-500 w-[20px]">
             <EyeIcon />
