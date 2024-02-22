@@ -136,7 +136,7 @@ export const todos: TodoEmail[] = [
     date: "2024-01-29T15:00:00.000Z",
     type: EmailType.Todo,
     completed: false,
-    active: true,
+    active: false,
   },
 ];
 

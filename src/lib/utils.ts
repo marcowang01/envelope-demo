@@ -1,3 +1,8 @@
+import { EmailType } from "@/data/emails";
+import { CardType } from "@/components/home/emailCard";
+import { EmailCardDragData } from "@/components/home/emailCard";
+import { EmailDragData } from "@/components/home/emailRow";
+
 export function formatDate(date: Date): string {
   const formatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -16,4 +21,33 @@ export function formatDate(date: Date): string {
   }
 
   return formattedDate.replace(/\d+/, `$&${suffix}`);
+}
+
+
+export function dragOverIsValid(
+  activeData: EmailDragData,
+  overData: EmailCardDragData | EmailDragData,
+): boolean {
+  // always allow dragging over seen card
+  if (overData.type === CardType.Seen) {
+    return true
+  }
+
+  // summary emails can only be dragged over todo card, todo email
+  if (activeData.type === EmailType.Summary) {
+    return (
+      overData.type === CardType.Todo ||
+      overData.type === EmailType.Todo
+    );
+  }
+
+  // to-do emails can only be dragged over todo email, todo card,
+  if (activeData.type === EmailType.Todo) {
+    return (
+      overData.type === CardType.Todo || overData.type === EmailType.Todo
+    );
+  }
+
+
+  return false
 }

@@ -1,4 +1,4 @@
-import { Card } from "./card";
+import { Card } from "./emailCard";
 import { TrackingEmail } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
 import { SimpleRow } from "./simpleRow";

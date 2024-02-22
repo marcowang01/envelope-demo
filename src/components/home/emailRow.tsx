@@ -1,3 +1,5 @@
+"use client"
+
 import { CheckIcon } from "@/assets/check-icon";
 import { EyeIcon } from "@/assets/eye-icon";
 import { PencilIcon } from "@/assets/pencil-icon";
@@ -8,6 +10,12 @@ import { CSS } from "@dnd-kit/utilities";
 import { cva } from "class-variance-authority";
 import { formatDate } from "@/lib/utils";
 import { Email } from "@/data/emails";
+import { EmailType } from "@/data/emails";
+
+export interface EmailDragData {
+  type: EmailType;
+  email: Email;
+};
 
 export function EmailRow({
   email,
@@ -24,6 +32,12 @@ export function EmailRow({
   actions: string[];
   isOverlay?: boolean;
 }) {
+
+  const payload: EmailDragData = {
+    type: email.type,
+    email: email,
+  };
+
   const {
     setNodeRef,
     attributes,
@@ -33,10 +47,7 @@ export function EmailRow({
     isDragging,
   } = useSortable({
     id: email.id,
-    data: {
-      type: email.type,
-      email: email,
-    },
+    data: payload
   });
 
   const style = {

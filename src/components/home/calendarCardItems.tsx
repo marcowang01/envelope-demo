@@ -1,4 +1,4 @@
-import { Card } from "../home/card";
+import { Card } from "./emailCard";
 import { CalendarEmail } from "@/data/emails";
 import { CalendarIcon } from "@/assets/calendar-icon";
 import { SimpleRow } from "../home/simpleRow";

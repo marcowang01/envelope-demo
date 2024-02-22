@@ -9,9 +9,23 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 import { Email } from "@/data/emails";
+
 export interface Card {
   id: UniqueIdentifier;
   title: string;
+}
+
+export enum CardType {
+  Summary = "card-summary",
+  Todo = "card-todo",
+  Calendar = "card-calendar",
+  Tracking = "card-tracking",
+  Seen = "card-seen",
+}
+
+export interface EmailCardDragData {
+  type: CardType;
+  card: Card;
 }
 
 export function EmailCard({
@@ -31,12 +45,14 @@ export function EmailCard({
     return emailItems.map((email) => email.id);
   }, [emailItems]);
 
+  const payload: EmailCardDragData = {
+    type: card.id as CardType,
+    card: card,
+  };
+
   const { setNodeRef } = useDroppable({
     id: card.id,
-    data: {
-      type: "card",
-      card: card,
-    },
+    data: payload,
   });
 
   return (

@@ -1,4 +1,4 @@
-import { Card } from "./card";
+import { Card } from "./emailCard";
 import { SummaryEmail, Email } from "@/data/emails";
 import { EmailRow } from "./emailRow";
 
