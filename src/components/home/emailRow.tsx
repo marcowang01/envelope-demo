@@ -54,17 +54,6 @@ export function EmailRow({
     transform: CSS.Translate.toString(transform),
   };
 
-  const variants = cva("", {
-    variants: {
-      dragging: {
-        // style of the email row that is overlaying the actual position
-        over: "opacity-100 bg-gray-300 text-black",
-        // style of the email row that is currenlt being dragged
-        overlay: "bg-gray-100 w-[500px] px-[20px]",
-        default: "w-full",
-      },
-    },
-  });
 
   return (
     <div
@@ -72,9 +61,11 @@ export function EmailRow({
       className={clsx(
         "group/row italic text-gray-450  flex flex-row font-xl cursor-grab py-[10px] rounded-[10px]",
         gapClass,
-        variants({
-          dragging: isOverlay ? "overlay" : isDragging ? "over" : "default",
-        }),
+        {
+          "bg-gray-100 w-fit px-[20px] gap-0": isOverlay,
+          "opacity-100 bg-gray-300 text-black": isDragging && !isOverlay,
+          "w-full": !isOverlay && !isDragging,
+        },
       )}
       // style={style}
       {...attributes}
@@ -85,15 +76,15 @@ export function EmailRow({
       </div>
       <div
         className={clsx(
-          "flex flex-row justify-between items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer",
+          "flex flex-row  items-center  group-hover/row:text-gray-800  group-active/row:text-gray-500  cursor-pointer",
           {
-            grow: !isOverlay,
+            "grow justify-between": !isOverlay,
           },
         )}
       >
         <div
           className={clsx({
-            grow: !isOverlay,
+            "grow": !isOverlay,
           })}
         >
           {title}
