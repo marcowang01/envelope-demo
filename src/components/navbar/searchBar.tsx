@@ -36,6 +36,12 @@ export function SearchBar() {
     console.log(autoComplete);
   }, [autoComplete]);
 
+  useEffect(() => {
+    if (searchInput === "") {
+      setAutoComplete("");
+    }
+  }, [searchInput]);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     var value = e.target.value;
     setSearchInput(value);
