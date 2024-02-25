@@ -54,7 +54,6 @@ export function EmailRow({
     transform: CSS.Translate.toString(transform),
   };
 
-
   return (
     <div
       ref={setNodeRef}
@@ -84,7 +83,7 @@ export function EmailRow({
       >
         <div
           className={clsx({
-            "grow": !isOverlay,
+            grow: !isOverlay,
           })}
         >
           {title}
