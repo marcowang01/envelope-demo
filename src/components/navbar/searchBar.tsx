@@ -17,6 +17,7 @@ export function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [autoComplete, setAutoComplete] = useState("");
   const [suggestions, setSuggestions] = useState(autocompleteSuggestions);
+  const [showTab, setShowTab] = useState(false);
   const trie = new Trie();
 
   // Insert words into trie
@@ -30,11 +31,17 @@ export function SearchBar() {
   )();
 
   // todo: add tab to autocomplete, add multiword autocomplete
+  // todo: simple row should be draggable into the view
 
   //console log autocomplete
   useEffect(() => {
-    console.log(autoComplete);
-  }, [autoComplete]);
+    // console.log(autoComplete);
+    if (autoComplete !== searchInput) {
+      setShowTab(true);
+    } else {
+      setShowTab(false);
+    }
+  }, [autoComplete, searchInput]);
 
   useEffect(() => {
     if (searchInput === "") {
@@ -45,8 +52,8 @@ export function SearchBar() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     var value = e.target.value;
     setSearchInput(value);
-    var words = value.split(" ");
-    // var words = value
+    // var words = value.split(" ");
+    var words = [value]
     var trie_prefix = words[words.length - 1].toLowerCase();
     var found_words = trie.find(trie_prefix).sort((a, b) => {
       return a.length - b.length;
@@ -54,8 +61,8 @@ export function SearchBar() {
     var first_word = found_words[0];
     if (
       found_words.length !== 0 &&
-      value !== "" &&
-      value[value.length - 1] !== " "
+      value !== "" 
+      // value[value.length - 1] !== " "
     ) {
       if (first_word != null) {
         var remainder = first_word.slice(trie_prefix.length);
@@ -78,6 +85,9 @@ export function SearchBar() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleSubmit();
+    } else if (event.key === "Tab") {
+      event.preventDefault();
+      setSearchInput(autoComplete);
     }
   };
 
@@ -101,9 +111,12 @@ export function SearchBar() {
             onChange={(e) => onChange(e)}
             onKeyDown={handleKeyDown}
           />
-          <div className="absolute pl-3 left-[20px] text-gray-450 z-10">
-            {autoComplete}
-          </div>
+          {autoComplete && (<div className="absolute pl-3 left-[20px] text-gray-450 z-10 flex flex-row justify-start items-cetner">
+            <div>{autoComplete}</div>
+            {showTab && (<div className="bg-white border px-[13px] py-[3px] ml-[13px] text-gray-600 border-gray-600 text-[12px] rounded-md">
+              tab
+            </div>)}
+          </div>)}
         </div>
         {searchInput && (
           <>
