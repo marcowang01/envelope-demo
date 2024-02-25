@@ -98,7 +98,7 @@ export function SearchBar() {
 
   return (
     <div className="relative group flex flex-col items-center rounded-xl grow">
-      <div className="absolute bg-gray-50 p-4 rounded-xl w-full">
+      <div className="absolute bg-gray-100 p-4 rounded-xl w-full">
         <div className="flex items-center w-full relative">
           <div className="pointer-events-none text-gray-500 group-hover:text-blue-400 group-focus-within:text-blue-400">
             <CmdIcon />
