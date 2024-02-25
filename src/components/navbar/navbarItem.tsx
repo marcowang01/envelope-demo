@@ -22,7 +22,7 @@ export function NavbarItem({
     // <Link href={path}>
     <div
       className={clsx(
-        "bg-gray-100 p-4 text-gray-500 font-normal text-base rounded-xl cursor-pointer transition-all",
+        "p-4 font-normal text-base rounded-xl cursor-pointer transition-all",
         hoverClass,
         {
           // "text-green-400": pathName === "/" && path === "/",
@@ -34,6 +34,7 @@ export function NavbarItem({
           "bg-yellow-400 text-white":
             pathName === "/friends" && path === "/friends",
           "text-orange-400": pathName === "/settings" && path === "/settings",
+          "bg-gray-100  text-gray-500 ": pathName !== path,
         },
       )}
     >
