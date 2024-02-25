@@ -295,7 +295,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "United Airlines, me",
     title: "Your trip confirmation (LAX - ORD)",
-    searchText: "trip ",
+    searchText: "trip confirmation",
     date: "2024-01-30T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,

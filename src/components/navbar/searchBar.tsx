@@ -128,7 +128,7 @@ export function SearchBar() {
               {filteredSuggestions.map((suggestion, index) => (
                 <li
                   key={index}
-                  className="p-2 hover:bg-gray-100 cursor-pointer"
+                  className="p-2 hover:bg-gray-300 cursor-pointer rounded-lg"
                   onClick={() => {
                     setSearchInput(suggestion.searchText); // Update the search input with the selected suggestion
                     // Optionally, you can submit the search right after selecting
