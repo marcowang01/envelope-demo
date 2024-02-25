@@ -25,7 +25,7 @@ export function NavbarItem({
         "p-4 font-normal text-base rounded-xl cursor-pointer transition-all",
         hoverClass,
         {
-          // "text-green-400": pathName === "/" && path === "/",
+          "bg-gray-100  text-gray-500": pathName === "/" && path === "/",
           "bg-rose-400 text-white":
             pathName === "/newsletter" && path === "/newsletter",
           "bg-blue-500 text-white":
@@ -33,7 +33,7 @@ export function NavbarItem({
           "bg-pink-500 text-white": pathName === "/job" && path === "/job",
           "bg-yellow-400 text-white":
             pathName === "/friends" && path === "/friends",
-          "text-orange-400": pathName === "/settings" && path === "/settings",
+          "bg-gray-100 text-orange-400 ": pathName === "/settings" && path === "/settings",
           "bg-gray-100  text-gray-500 ": pathName !== path,
         },
       )}
