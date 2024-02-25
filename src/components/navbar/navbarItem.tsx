@@ -33,7 +33,8 @@ export function NavbarItem({
           "bg-pink-500 text-white": pathName === "/job" && path === "/job",
           "bg-yellow-400 text-white":
             pathName === "/friends" && path === "/friends",
-          "bg-gray-100 text-orange-400 ": pathName === "/settings" && path === "/settings",
+          "bg-gray-100 text-orange-400 ":
+            pathName === "/settings" && path === "/settings",
           "bg-gray-100  text-gray-500 ": pathName !== path,
         },
       )}

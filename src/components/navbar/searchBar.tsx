@@ -111,7 +111,7 @@ export function SearchBar() {
             onKeyDown={handleKeyDown}
           />
           {autoComplete && (
-            <div className="absolute pl-3 left-[20px] text-gray-450 z-10 flex flex-row justify-start items-cetner">
+            <div className="absolute pl-3 left-[20px] text-gray-450 z-10 flex-row justify-start items-cetner hidden group-focus-within:flex">
               <div>{autoComplete}</div>
               {showTab && (
                 <div className="bg-white border px-[13px] py-[3px] ml-[13px] text-gray-600 border-gray-600 text-[12px] rounded-md">
@@ -124,7 +124,7 @@ export function SearchBar() {
         {searchInput && (
           <>
             <div className="w-full h-[1px] bg-gray-350 my-2 mt-4 hidden group-focus-within:block" />
-            <ul className="top-[58px] list-none w-full max-h-60 overflow-auto rounded-lg">
+            <ul className="top-[58px] list-none w-full max-h-60 overflow-auto rounded-lg hidden group-focus-within:block">
               {filteredSuggestions.map((suggestion, index) => (
                 <li
                   key={index}
