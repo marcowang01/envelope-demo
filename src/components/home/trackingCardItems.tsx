@@ -1,5 +1,5 @@
 import { Card } from "./emailCard";
-import { TrackingEmail } from "@/data/emails";
+import { TrackingEmail, Email } from "@/data/emails";
 import { CIcon } from "@/assets/c-icon";
 import { SimpleRow } from "./simpleRow";
 import clsx from "clsx";
@@ -25,6 +25,7 @@ export function TrackingCardItems({
           id={item.id}
           title={item.content}
           label={item.status}
+          email={item as Email}
         />
       ))}
     </div>

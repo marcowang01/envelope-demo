@@ -46,6 +46,7 @@ import { EmailRow } from "@/components/home/emailRow";
 import { dragOverIsValid } from "@/lib/utils";
 import { EmailDragData } from "@/components/home/emailRow";
 import { SeenIconDroppable } from "@/components/home/seenIcon";
+import { SimpleRow } from "@/components/home/simpleRow";
 
 const defaultCards = [
   { id: "summary", title: "While you were gone..." },
@@ -367,6 +368,17 @@ export default function Home() {
                   title={activeEmail.title || ""}
                   gapClass={"gap-[40px]"}
                   actions={["view", "edit"]}
+                  isOverlay
+                />
+              )}
+              {activeEmail &&
+              (activeEmail.type === EmailType.Calendar ||
+                activeEmail.type === EmailType.Tracking) && (
+                <SimpleRow
+                  email={activeEmail}
+                  id={activeEmail.id}
+                  label={activeEmail.status || ""}
+                  title={activeEmail.content || ""}
                   isOverlay
                 />
               )}

@@ -1,5 +1,5 @@
 import { Card } from "./emailCard";
-import { CalendarEmail } from "@/data/emails";
+import { CalendarEmail, Email } from "@/data/emails";
 import { CalendarIcon } from "@/assets/calendar-icon";
 import { SimpleRow } from "../home/simpleRow";
 import clsx from "clsx";
@@ -25,6 +25,7 @@ export function CalendarCardItems({
           id={event.id}
           title={event.content}
           label={event.status}
+          email={event as Email}
         />
       ))}
     </div>
