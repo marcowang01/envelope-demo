@@ -89,9 +89,16 @@ export function SearchBar() {
   };
 
   // Filter suggestions based on input
-  const filteredSuggestions = suggestions.filter((suggestion) =>
-    suggestion.searchText.toLowerCase().includes(searchInput.toLowerCase()),
-  );
+  const filteredSuggestions = suggestions.filter((suggestion) =>{
+    // look through each of the searchText
+    // use map, filter or reduce
+    const containsInput = suggestion.searchText.map((searchText) => {
+      // return searchText.toLowerCase().includes(searchInput.toLowerCase());
+      return searchText.toLowerCase() === searchInput.toLowerCase();
+    })
+
+    return containsInput.includes(true);
+  });
 
   return (
     <div className="relative group flex flex-col items-center rounded-xl grow">
@@ -127,11 +134,6 @@ export function SearchBar() {
                 <li
                   key={index}
                   className="p-2 hover:bg-gray-300 cursor-pointer rounded-lg"
-                  onClick={() => {
-                    setSearchInput(suggestion.searchText); // Update the search input with the selected suggestion
-                    // Optionally, you can submit the search right after selecting
-                    // handleSubmit();
-                  }}
                 >
                   <div className="flex flex-row items-center w-full">
                     <div className="mr-3">

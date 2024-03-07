@@ -245,7 +245,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Parchment, me",
     title: "You’ve Received a Document: TETFJYVRO",
-    searchText: "tri",
+    searchText: [...deconstruct("tri")],
     date: "2024-01-31T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -255,7 +255,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "AT&T Online Services, me",
     title: "Time to Return Your AT&T Equipment",
-    searchText: "t",
+    searchText: ["t"],
     date: "2024-02-10T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -265,7 +265,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "AT&T Online Services, me",
     title: "Your Request to Move Your AT&T Service",
-    searchText: "t",
+    searchText: ["t"],
     date: "2024-02-11T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -275,7 +275,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Rabab, Medina, Lindsey, me",
     title: "ShaoBo ZHANG - Questionnaires for NIV",
-    searchText: "trip ",
+    searchText: [...deconstruct("trip ")],
     date: "2024-01-30T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -285,7 +285,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Parchment, me",
     title: "Document has been received",
-    searchText: "trip ",
+    searchText: [...deconstruct("trip ", "tr")],
     date: "2024-01-30T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -295,18 +295,18 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "United Airlines, me",
     title: "Your trip confirmation (LAX - ORD)",
-    searchText: "trip confirmation",
+    searchText: [...deconstruct("trip confirmation", "trip")],
     date: "2024-01-30T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
     active: true,
   },
-  
+
   {
     id: `autocomplete-${uuidv4()}`,
     sender: "American Airlines, me",
     title: "Your trip confirmation (LAX - ORD)",
-    searchText: "a",
+    searchText: ["a"],
     date: "2024-01-22T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -316,7 +316,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "American Airlines, me",
     title: "Prepare for your upcoming trip to Chicago",
-    searchText: "a",
+    searchText: ["a"],
     date: "2024-03-04T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -326,7 +326,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "qbe-rentersus-box@us.qbe.com, me",
     title: "Information about your new QBE Renters Insurance policy",
-    searchText: "a",
+    searchText: ["a"],
     date: "2024-01-31T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -336,7 +336,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "The Park Evanston Property, me",
     title: "Park Evanston #913 Lease Expiring 4/18/2024 **REPLY NEEDED**",
-    searchText: "a",
+    searchText: ["a"],
     date: "2024-02-10T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -346,7 +346,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Anicka Yi, Remina Greenfield, Jenifer Cohen, me",
     title: "PROJECT INQUIRY - AnickaYi Studio - Generative Animation",
-    searchText: "al",
+    searchText: ["al"],
     date: "2024-02-24T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -356,7 +356,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Kevin Zhang, Alex Evans, Alen, me",
     title: "Curio Classified Intelligence Report - Edition 3",
-    searchText: "al",
+    searchText: ["al"],
     date: "2023-05-18T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -366,7 +366,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Kevin Zhang, Alex Evans, Alen, me",
     title: "Curio Round Annoucement Tuesday",
-    searchText: "al",
+    searchText: ["al"],
     date: "2023-02-20T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -376,7 +376,7 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Sarah Chieng, me",
     title: "Metaphor Next Steps",
-    searchText: "al",
+    searchText: ["al"],
     date: "2023-10-24T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
@@ -386,10 +386,25 @@ export const autocompleteSuggestions = [
     id: `autocomplete-${uuidv4()}`,
     sender: "Kevin Zhang, Alex Evans, Alen, me",
     title: "Curio Classified Intelligence Report - Edition 1",
-    searchText: "al",
+    searchText: ["al"],
     date: "2023-02-15T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
     active: true,
   },
 ];
+
+
+function deconstruct(str: string, minStr?: string): string[] {
+  const result: string[] = [];
+
+  for (let i = str.length; i >= 1; i--) {
+    result.push(str.substring(0, i));
+
+    if (str.substring(0, i) === minStr) {
+      break;
+    }
+  }
+
+  return result;
+}
