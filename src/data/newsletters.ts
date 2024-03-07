@@ -58,6 +58,15 @@ export const newsletterEmails: SummaryEmail[] = [
   },
   {
     id: `newsLetters-${uuidv4()}`,
+    sender: "Jacky.Z",
+    title: "Taste is a guide for what is worth",
+    date: "2024-01-14T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `newsLetters-${uuidv4()}`,
     sender: "Benedict.E",
     title: "weekly updates",
     date: "2024-01-08T15:00:00.000Z",
@@ -85,9 +94,27 @@ export const newsletterEmails: SummaryEmail[] = [
   },
   {
     id: `newsLetters-${uuidv4()}`,
+    sender: "Tiffany.N",
+    title: "Recapturing early-internet whimsy with HTML",
+    date: "2023-12-21T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `newsLetters-${uuidv4()}`,
     sender: "Benedict.E",
     title: "weekly updates",
     date: "2023-12-18T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `newsLetters-${uuidv4()}`,
+    sender: "Paul.G",
+    title: "Superlinear Returns",
+    date: "2023-12-12T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
     active: true,
@@ -119,5 +146,4 @@ export const newsletterEmails: SummaryEmail[] = [
     seen: false,
     active: true,
   },
-]
-
+];

@@ -74,11 +74,11 @@ export function SearchBar() {
     if (searchInput.trim().includes("trip")) {
       router.push(`/trip/${searchInput}`);
     } else if (searchInput.trim().includes("report") || searchInput.trim().includes("newsletter")) {
-      router.push(`/newsletter`);
+      router.push(`/newsletter/${searchInput}`);
     } else {
       router.push(`/`);
     }
-    setSearchInput("");
+    // setSearchInput("");
     // defocus input
     const activeElement = document.activeElement as HTMLElement | null;
     activeElement?.blur();
