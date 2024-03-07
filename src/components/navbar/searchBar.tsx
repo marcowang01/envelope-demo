@@ -29,9 +29,6 @@ export function SearchBar() {
     }
   })();
 
-  // todo: add tab to autocomplete, add multiword autocomplete
-  // todo: simple row should be draggable into the view
-
   //console log autocomplete
   useEffect(() => {
     // console.log(autoComplete);
@@ -99,7 +96,7 @@ export function SearchBar() {
     <div className="relative group flex flex-col items-center rounded-xl grow">
       <div className="absolute bg-gray-100 p-4 rounded-xl w-full">
         <div className="flex items-center w-full relative">
-          <div className="pointer-events-none text-gray-500 group-hover:text-blue-400 group-focus-within:text-blue-400">
+          <div className="pointer-events-none text-blue-400">
             <CmdIcon />
           </div>
           <input

@@ -48,13 +48,6 @@ import { EmailDragData } from "@/components/home/emailRow";
 import { SeenIconDroppable } from "@/components/home/seenIcon";
 import { SimpleRow } from "@/components/home/simpleRow";
 
-const defaultCards = [
-  { id: "summary", title: "While you were gone..." },
-  { id: "todo", title: "To-do" },
-  { id: "calendar", title: "Calendar" },
-  { id: "tracking", title: "Tracking" },
-];
-
 const initialEmails: Email[] = [
   ...summaryEmails,
   ...todos,
@@ -274,7 +267,7 @@ export default function Home() {
                 ? "text-yellow-400"
                 : "text-gray-450 group-hover:text-yellow-400"
             }
-            icon={<PencilIcon />}
+            icon={<PencilIcon className="text-yellow-400"/>}
           />
           <EmailCard
             card={{ id: CardType.Calendar, title: "Calendar" }}
@@ -303,7 +296,7 @@ export default function Home() {
                 ? "text-red-400"
                 : "text-gray-450 group-hover:text-red-400"
             }
-            icon={<CalendarIcon />}
+            icon={<CalendarIcon className="text-red-400"/>}
           />
           <EmailCard
             card={{ id: CardType.Tracking, title: "Tracking" }}
@@ -332,7 +325,7 @@ export default function Home() {
                 ? "text-blue-500"
                 : "text-gray-450 group-hover:text-blue-500"
             }
-            icon={<LoadingIcon />}
+            icon={<LoadingIcon className="text-blue-400"/>}
           />
         </div>
         <SeenIconDroppable

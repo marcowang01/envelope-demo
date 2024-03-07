@@ -1,6 +1,4 @@
-import { Card } from "./emailCard";
 import { CalendarEmail, Email } from "@/data/emails";
-import { CalendarIcon } from "@/assets/calendar-icon";
 import { SimpleRow } from "../home/simpleRow";
 import clsx from "clsx";
 

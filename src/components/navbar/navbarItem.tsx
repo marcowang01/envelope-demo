@@ -25,7 +25,7 @@ export function NavbarItem({
         "p-4 font-normal text-base rounded-xl cursor-pointer transition-all",
         hoverClass,
         {
-          "bg-gray-100  text-gray-500": pathName === "/" && path === "/",
+          "bg-gray-100  text-green-400": pathName === "/" && path === "/",
           "bg-rose-400 text-white":
             pathName === "/newsletter" && path === "/newsletter",
           "bg-blue-500 text-white":
