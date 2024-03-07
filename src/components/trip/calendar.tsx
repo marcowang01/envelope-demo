@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarCell } from "./calendarCell";
+import { CalendarCell } from "./calendar-cell";
+import { japan } from "@/data/calendar";
 
 export function Calendar() {
   // april 12 2024 iso string
@@ -27,15 +28,18 @@ export function Calendar() {
       {Array.from({ length: emptyCellsStart }).map((_, index) => (
         <div key={`empty-start-${index}`} className="w-[130px] h-[130px]"></div>
       ))}
-      {days.map((day, index) => (
+      {days.map((day, index) => {
+        return (
         <CalendarCell
           key={index}
           date={day.toISOString()}
-          isSelected={activeDay === day.toISOString()}
+          // isSelected={activeDay === day.toISOString()}
+          isSelected={false}
           row={Math.floor(index / 7)}
           col={index % 7}
+          events={japan[day.toISOString()] || []}
         />
-      ))}
+      )})}
     </div>
   );
 }

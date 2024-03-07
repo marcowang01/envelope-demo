@@ -15,25 +15,27 @@ const config: Config = {
       },
       colors: {
         gray: {
-          "50": "#FAFAFA",
-          "100": "#F7F7F7",
-          "200": "#F4F4F4",
-          "300": "#F0F2F3",
-          "350": "#EEEEEE",
-          "400": "#D0D0D0",
-          "425": "#CCCCCC",
-          "450": "#AAAAAA",
-          "500": "#777777",
-          "600": "#666666",
-          "800": "#444444",
-          "850": "#333333",
+          50: "#FAFAFA",
+          100: "#F7F7F7",
+          200: "#F4F4F4",
+          300: "#F0F2F3",
+          350: "#EEEEEE",
+          400: "#D0D0D0",
+          425: "#CCCCCC",
+          450: "#AAAAAA",
+          500: "#777777",
+          600: "#666666",
+          800: "#444444",
+          850: "#333333",
         },
         blue: {
           200: "#D4E5EF",
+          300: "#0090DF",
           400: "#1367DF",
           500: "#0B4291",
         },
         red: {
+          400: "#DB3644",
           500: "#F40000",
           600: "#FF0000",
         },
@@ -44,7 +46,9 @@ const config: Config = {
           400: "#EF0D4A",
         },
         pink: {
+          100: "#FFF2F2",
           400: "#F6B2BB",
+          500: "#FF5A60",
         },
         yellow: {
           400: "#FEDE02",
@@ -55,6 +59,11 @@ const config: Config = {
       },
     },
   },
+      safelist: [{
+            pattern: /(bg|text|border)-s2cond(Purple|Pink|Orange|Yellow|Lime|Mint|Test|Test2)/
+        }
+
+    ],
   plugins: [],
 };
 export default config;
