@@ -9,7 +9,10 @@ import { formatDate } from "@/lib/utils";
 import Trie from "@/lib/trie";
 
 const dictionary = {
-  words: ["tetfjvro", "transcript", "trial typefaces", "trip confirmation"],
+  words: [
+    "tetfjvro", "transcript", "trial typefaces", "trip confirmation", 
+    "american", "alexander_liao@outlook.com", "alliance", "all my workspace", "all my brubaker 2024", "all my benefits"
+  ],
 };
 
 export function SearchBar() {
@@ -51,9 +54,7 @@ export function SearchBar() {
     // var words = value.split(" ");
     var words = [value];
     var trie_prefix = words[words.length - 1].toLowerCase();
-    var found_words = trie.find(trie_prefix).sort((a, b) => {
-      return a.length - b.length;
-    });
+    var found_words = trie.find(trie_prefix)
     var first_word = found_words[0];
     if (
       found_words.length !== 0 &&

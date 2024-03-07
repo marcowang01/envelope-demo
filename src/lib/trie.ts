@@ -3,33 +3,24 @@ class TrieNode {
   prevLetter: TrieNode | null;
   nextLetters: { [key: string]: TrieNode };
   isComplete: boolean;
+  word: string | null; // Store the complete word at the end node
 
   constructor(letter: string | null) {
     this.letter = letter;
     this.prevLetter = null;
     this.nextLetters = {};
     this.isComplete = false;
-  }
-
-  // Method to iterate through nodes to get word prediction
-  getWord(): string {
-    let node: TrieNode | null = this;
-    const wordLetters: string[] = [];
-    while (node && node.prevLetter) {
-      if (node.letter) {
-        wordLetters.unshift(node.letter);
-      }
-      node = node.prevLetter;
-    }
-    return wordLetters.join("");
+    this.word = null; // Initially, there's no word
   }
 }
 
 class Trie {
   root: TrieNode;
+  wordList: string[]; // Maintain a list of inserted words
 
   constructor() {
     this.root = new TrieNode(null);
+    this.wordList = []; // Initialize an empty array to track word insertion order
   }
 
   // Method to insert a new word in Trie
@@ -45,6 +36,8 @@ class Trie {
 
       if (i === word.length - 1) {
         node.isComplete = true;
+        node.word = word; // Store the complete word at the end node
+        this.wordList.push(word); // Add the word to the list to maintain insertion order
       }
     }
   }
@@ -67,25 +60,29 @@ class Trie {
   // Method to find words with similar previous letters
   find(clueLetters: string): string[] {
     let node = this.root;
-    const output: string[] = [];
     for (let i = 0; i < clueLetters.length; i++) {
       const clueLetter = clueLetters[i];
       let nextNode = node.nextLetters[clueLetter];
       if (nextNode) {
         node = nextNode;
       } else {
-        return output;
+        return [];
       }
     }
 
+    const output: string[] = [];
     this.findAllWords(node, output);
-    return output;
+    // Filter the wordList to return only those words that start with the clueLetters
+    const filteredWords = this.wordList.filter((word) =>
+      word.startsWith(clueLetters)
+    );
+    return filteredWords;
   }
 
   // Helper method that finds next possible words
   private findAllWords(node: TrieNode, arr: string[]): void {
-    if (node.isComplete) {
-      arr.unshift(node.getWord());
+    if (node.isComplete && node.word) {
+      arr.push(node.word);
     }
 
     for (const nextLetter in node.nextLetters) {
