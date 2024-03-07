@@ -73,7 +73,7 @@ export function SearchBar() {
   const handleSubmit = () => {
     if (searchInput.trim().includes("trip")) {
       router.push(`/trip/${searchInput}`);
-    } else if (searchInput.trim().includes("newsletter")) {
+    } else if (searchInput.trim().includes("report") || searchInput.trim().includes("newsletter")) {
       router.push(`/newsletter`);
     } else {
       router.push(`/`);
