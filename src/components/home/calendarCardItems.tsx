@@ -11,7 +11,7 @@ export function CalendarCardItems({
     // 160 is exactly 4 rows of 40px
     <div
       className={clsx(
-        "flex flex-col justify start mt-[12px] h-[160px] overflow-y-auto",
+        "flex flex-col justify start mt-[12px] h-[calc((100vh-543px)*0.33)] max-h-[200px] overflow-y-auto",
         {
           "pr-[8px]": calendarEvents.length > 4,
         },
