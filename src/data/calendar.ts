@@ -13,8 +13,10 @@ const flightToTokyo = (date: string) => {
     id: uuidv4(),
     date: date,
     title: "Flight to Tokyo",
-    bgColor: "bg-[#D4E5EF]",
-    textColor: "text-[#2E4C8C]",
+    // bgColor: "bg-[#D4E5EF]",
+    bgColor: "#D4E5EF",
+    // textColor: "text-[#2E4C8C]",
+    textColor: "#2E4C8C",
   };
 };
 
@@ -23,8 +25,10 @@ const stayInMeguro = (date: string) => {
     id: uuidv4(),
     date: date,
     title: "Stay in Meguro",
-    bgColor: "bg-pink-100",
-    textColor: "text-pink-500",
+    // bgColor: "bg-pink-100",
+    bgColor: "#FFF2F2",
+    // textColor: "text-pink-500",
+    textColor: "#FF5A60",
   };
 };
 
@@ -33,8 +37,10 @@ const ticketTo2121 = (date: string) => {
     id: uuidv4(),
     date: date,
     title: "Ticket to 21_21",
-    bgColor: "bg-gray-200",
-    textColor: "text-blue-300",
+    // bgColor: "bg-gray-200",
+    bgColor: "#f4f4f4",
+    // textColor: "text-blue-300",
+    textColor: "#0090DF",
   };
 };
 
@@ -43,8 +49,10 @@ const dinnerAtShin = (date: string) => {
     id: uuidv4(),
     date: date,
     title: "Dinner at Udon Shin",
-    bgColor: "bg-red-400",
-    textColor: "text-gray-350",
+    // bgColor: "bg-red-400",
+    bgColor: "#DB3644",
+    // textColor: "text-gray-350",
+    textColor: "#EEEEEE",
   };
 };
 
@@ -53,8 +61,10 @@ const meetCarlHauser = (date: string) => {
     id: uuidv4(),
     date: date,
     title: "Meet Carlhauser",
-    bgColor: "bg-blue-500",
-    textColor: "text-gray-350",
+    // bgColor: "bg-blue-500",
+    bgColor: "#0B4291",
+    // textColor: "text-gray-350",
+    textColor: "#EEEEEE",
   };
 };
 

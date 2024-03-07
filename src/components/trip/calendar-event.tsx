@@ -9,9 +9,11 @@ export function CalendarEvent(
   return (
     <div className={clsx(
       "w-full rounded-sm flex justify-start items-center pl-1 text-[8px] font-bold", 
-      bgColor, 
-      textColor
-    )}>
+      // bgColor, 
+      // textColor
+    )}
+    style={{backgroundColor: bgColor, color: textColor}}
+    >
       {title}
     </div>
   )
