@@ -71,12 +71,17 @@ export function SearchBar() {
   };
 
   const handleSubmit = () => {
-    if (searchInput.trim()) {
+    if (searchInput.trim().includes("trip")) {
       router.push(`/trip/${searchInput}`);
+    } else if (searchInput.trim().includes("newsletter")) {
+      router.push(`/newsletter`);
     } else {
       router.push(`/`);
     }
     setSearchInput("");
+    // defocus input
+    const activeElement = document.activeElement as HTMLElement | null;
+    activeElement?.blur();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
