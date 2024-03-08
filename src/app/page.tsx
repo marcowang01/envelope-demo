@@ -47,6 +47,7 @@ import { dragOverIsValid } from "@/lib/utils";
 import { EmailDragData } from "@/components/home/emailRow";
 import { SeenIconDroppable } from "@/components/home/seenIcon";
 import { SimpleRow } from "@/components/home/simpleRow";
+import { ExpandCard } from "@/components/home/expandableCard";
 
 const initialEmails: Email[] = [
   ...summaryEmails,
@@ -225,20 +226,11 @@ export default function Home() {
     >
       <div className="flex flex-row w-full justify-center grow gap-[70px]">
         <div className="w-3/5">
-          <EmailCard
+          <ExpandCard
             card={{ id: CardType.Summary, title: "While you were gone..." }}
             emailItems={emails.filter(
               (email) => email.type === EmailType.Summary,
             )}
-            body={
-              <SummaryCardItems
-                summaryEmails={
-                  emails.filter(
-                    (email) => email.type === EmailType.Summary && email.active,
-                  ) as SummaryEmail[]
-                }
-              />
-            }
             isDragging={
               isDraggging &&
               !(overType === CardType.Summary || overType === EmailType.Summary)

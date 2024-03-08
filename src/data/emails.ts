@@ -19,6 +19,7 @@ export interface Email {
   completed?: boolean;
   content?: string;
   status?: string;
+  spam?: boolean;
 }
 
 export interface SummaryEmail extends Email {
@@ -84,39 +85,33 @@ export const summaryEmails: SummaryEmail[] = [
 
   {
     id: `summary-${uuidv4()}`,
-    sender: "Lucas.I",
-    title: "au and dxf files",
-    date: "2024-01-31T15:00:00.000Z",
-    type: EmailType.Summary,
-    seen: false,
-    active: true,
-  },
-  {
-    id: `summary-${uuidv4()}`,
-    sender: "Sarah.C",
-    title: "exa.ai logo design next steps",
-    date: "2024-01-31T15:00:00.000Z",
-    type: EmailType.Summary,
-    seen: false,
-    active: true,
-  },
-  {
-    id: `summary-${uuidv4()}`,
-    sender: "Geoff.C",
-    title: "Peter Stevenson intro",
+    sender: "Vercel",
+    title: "Vercel January Product Update",
     date: "2024-01-29T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
     active: true,
+    spam: true,
   },
   {
     id: `summary-${uuidv4()}`,
-    sender: "Chris.C",
-    title: "wibeeeeeee",
+    sender: "Google",
+    title: "[Update] Changes to the Google Cloud...",
+    date: "2024-01-28T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+    spam: true,
+  },
+  {
+    id: `summary-${uuidv4()}`,
+    sender: "Neuton.F",
+    title: "PR merged on gitlab",
     date: "2024-01-29T15:00:00.000Z",
     type: EmailType.Summary,
     seen: false,
     active: true,
+    spam: true,
   },
 ];
 
