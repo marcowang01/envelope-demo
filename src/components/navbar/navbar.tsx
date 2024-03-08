@@ -42,7 +42,7 @@ export function Navbar() {
       <Link href={routes.job}>
         <NavbarItem
           text={"job"}
-          hoverClass={"hover:bg-pink-500 hover:text-white"}
+          hoverClass={"hover:bg-pink-400 hover:text-white"}
           path={routes.job}
         />
       </Link>
