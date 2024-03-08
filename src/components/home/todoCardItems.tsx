@@ -7,7 +7,7 @@ export function TodoCardItems({ todos }: { todos: TodoEmail[] }) {
     // 176 is exactly 4 rows of 44px
     <div
       className={clsx(
-        "flex flex-col justify start mt-[20px] h-[calc((100vh-543px)*0.36)] max-h-[220px] overflow-y-auto",
+        "flex flex-col justify start mt-[20px] h-[calc((100vh-549px)*0.36)] max-h-[220px] overflow-y-auto",
         {
           "pr-[8px]": todos.length > 4,
         },

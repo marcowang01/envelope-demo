@@ -262,11 +262,7 @@ export default function Home() {
               isDraggging &&
               !(overType === CardType.Todo || overType === EmailType.Todo)
             }
-            titleColorClass={
-              overType === CardType.Todo || overType === EmailType.Todo
-                ? "text-yellow-400"
-                : "text-gray-450 group-hover:text-yellow-400"
-            }
+            titleColorClass={"text-yellow-400"}
             icon={<PencilIcon className="text-yellow-400"/>}
           />
           <EmailCard
@@ -291,11 +287,7 @@ export default function Home() {
                 overType === EmailType.Calendar
               )
             }
-            titleColorClass={
-              overType === CardType.Calendar || overType === EmailType.Calendar
-                ? "text-red-400"
-                : "text-gray-450 group-hover:text-red-400"
-            }
+            titleColorClass={"text-red-400"}
             icon={<CalendarIcon className="text-red-400"/>}
           />
           <EmailCard
@@ -320,11 +312,7 @@ export default function Home() {
                 overType === EmailType.Tracking
               )
             }
-            titleColorClass={
-              overType === CardType.Tracking || overType === EmailType.Tracking
-                ? "text-blue-500"
-                : "text-gray-450 group-hover:text-blue-500"
-            }
+            titleColorClass={"text-blue-500"}
             icon={<LoadingIcon className="text-blue-400"/>}
           />
         </div>

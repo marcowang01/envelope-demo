@@ -81,6 +81,43 @@ export const summaryEmails: SummaryEmail[] = [
     seen: false,
     active: true,
   },
+
+  {
+    id: `summary-${uuidv4()}`,
+    sender: "Lucas.I",
+    title: "au and dxf files",
+    date: "2024-01-31T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `summary-${uuidv4()}`,
+    sender: "Sarah.C",
+    title: "exa.ai logo design next steps",
+    date: "2024-01-31T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `summary-${uuidv4()}`,
+    sender: "Geoff.C",
+    title: "Peter Stevenson intro",
+    date: "2024-01-29T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
+  {
+    id: `summary-${uuidv4()}`,
+    sender: "Chris.C",
+    title: "wibeeeeeee",
+    date: "2024-01-29T15:00:00.000Z",
+    type: EmailType.Summary,
+    seen: false,
+    active: true,
+  },
 ];
 
 export const todos: TodoEmail[] = [

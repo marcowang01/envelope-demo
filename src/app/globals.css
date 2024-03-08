@@ -42,7 +42,8 @@ body {
 }
 
 /* Still in your global CSS file */
-.group:hover .group-hover-spin {
+/* .group:hover .group-hover-spin { */
+.group .group-hover-spin {
   animation: spin 1s linear infinite;
 }
 

@@ -1,0 +1,63 @@
+"use client";
+
+import clsx from "clsx";
+import { ReactNode, useMemo } from "react";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
+import {
+  useDndContext,
+  type UniqueIdentifier,
+  useDroppable,
+} from "@dnd-kit/core";
+import { Email } from "@/data/emails";
+import { useState } from "react";
+import { Card, CardType, EmailCardDragData } from "@/components/home/emailCard";
+
+export function ExpandCard({
+  card,
+  emailItems,
+  body,
+  titleColorClass,
+  isDragging,
+}: {
+  card: Card;
+  emailItems: Email[];
+  body: ReactNode;
+  titleColorClass?: string;
+  isDragging: boolean;
+}) {
+  const emailIds = useMemo(() => {
+    return emailItems.map((email) => email.id);
+  }, [emailItems]);
+
+  const payload: EmailCardDragData = {
+    type: card.id as CardType,
+    card: card,
+  };
+
+  const { setNodeRef } = useDroppable({
+    id: card.id,
+    data: payload,
+  });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={clsx("group w-full", {
+        "opacity-50": isDragging,
+      })}
+    >
+      <div
+        className={clsx(
+          "text-3xl font-light mb-[20px] flex flex-row justify-start items-center gap-[10px]",
+          titleColorClass ? titleColorClass : "text-gray-450",
+        )}
+      >
+        {card.title}
+      </div>
+      <div className="w-full h-[1px] bg-gray-350" />
+      <div className="w-full mb-[40px]">
+        <SortableContext items={emailIds}>{body}</SortableContext>
+      </div>
+    </div>
+  );
+}

@@ -61,7 +61,7 @@ export function EmailRow({
         "group/row italic text-gray-450  flex flex-row font-xl cursor-grab py-[10px] rounded-[10px]",
         gapClass,
         {
-          "bg-gray-200 w-fit px-[20px] gap-0 backdrop-blur-sm bg-opacity-50": isOverlay,
+          "bg-gray-350 w-fit px-[20px] gap-0 backdrop-blur-sm bg-opacity-50": isOverlay,
           "opacity-100 bg-gray-300 text-black": isDragging && !isOverlay,
           "w-full": !isOverlay && !isDragging,
         },
