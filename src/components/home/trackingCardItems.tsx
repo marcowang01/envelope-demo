@@ -32,7 +32,7 @@ export function TrackingCardItems({
   );
 }
 
-export function LoadingIcon({className}: {className?: string}) {
+export function LoadingIcon({ className }: { className?: string }) {
   return (
     <div className={clsx("group-hover-spin", className)}>
       <CIcon />

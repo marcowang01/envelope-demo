@@ -30,16 +30,17 @@ export function Calendar() {
       ))}
       {days.map((day, index) => {
         return (
-        <CalendarCell
-          key={index}
-          date={day.toISOString()}
-          // isSelected={activeDay === day.toISOString()}
-          isSelected={false}
-          row={Math.floor(index / 7)}
-          col={index % 7}
-          events={japan[day.toISOString()] || []}
-        />
-      )})}
+          <CalendarCell
+            key={index}
+            date={day.toISOString()}
+            // isSelected={activeDay === day.toISOString()}
+            isSelected={false}
+            row={Math.floor(index / 7)}
+            col={index % 7}
+            events={japan[day.toISOString()] || []}
+          />
+        );
+      })}
     </div>
   );
 }

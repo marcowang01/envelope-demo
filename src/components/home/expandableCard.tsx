@@ -70,14 +70,14 @@ export function ExpandCard({
       <div className="w-full h-[1px] bg-gray-350" />
       <div className="w-full mb-[40px]">
         <SortableContext items={emailIds}>
-            <SummaryCardItems
-                filtered={!isExpanded}
-                summaryEmails={
-                  emailItems.filter(
-                    (email) => email.type === EmailType.Summary && email.active,
-                  ) as SummaryEmail[]
-                }
-              />
+          <SummaryCardItems
+            filtered={!isExpanded}
+            summaryEmails={
+              emailItems.filter(
+                (email) => email.type === EmailType.Summary && email.active,
+              ) as SummaryEmail[]
+            }
+          />
         </SortableContext>
       </div>
     </div>

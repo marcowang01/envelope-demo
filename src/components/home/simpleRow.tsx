@@ -34,15 +34,19 @@ export function SimpleRow({
     id: id,
     data: payload,
   });
-  
+
   return (
-    <div 
+    <div
       ref={setNodeRef}
-      className={clsx("flex flex-row justify-between items-center w-full py-[8px] rounded-xl",        {
-          "bg-gray-350 w-fit px-[20px] gap-0 backdrop-blur-sm bg-opacity-50": isOverlay,
+      className={clsx(
+        "flex flex-row justify-between items-center w-full py-[8px] rounded-xl",
+        {
+          "bg-gray-350 w-fit px-[20px] gap-0 backdrop-blur-sm bg-opacity-50":
+            isOverlay,
           "opacity-100 bg-gray-300 text-black": isDragging && !isOverlay,
           "w-full": !isOverlay && !isDragging,
-        })}
+        },
+      )}
       {...attributes}
       {...listeners}
     >

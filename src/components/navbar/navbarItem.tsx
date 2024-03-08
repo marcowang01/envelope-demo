@@ -30,7 +30,7 @@ export function NavbarItem({
             pathName === "/newsletter" && path === "/newsletter",
           "bg-blue-500 text-white":
             pathName === "/apartment" && path === "/apartment",
-          "bg-pink-500 text-white": pathName === "/job" && path === "/job",
+          "bg-pink-400 text-white": pathName === "/job" && path === "/job",
           "bg-yellow-400 text-white":
             pathName === "/friends" && path === "/friends",
           "bg-gray-100 text-orange-400 ":

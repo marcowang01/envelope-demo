@@ -74,7 +74,7 @@ class Trie {
     this.findAllWords(node, output);
     // Filter the wordList to return only those words that start with the clueLetters
     const filteredWords = this.wordList.filter((word) =>
-      word.startsWith(clueLetters)
+      word.startsWith(clueLetters),
     );
     return filteredWords;
   }

@@ -7,7 +7,7 @@ export function CalendarCell({
   isSelected,
   row,
   col,
-  events
+  events,
 }: {
   date: string;
   isSelected: boolean;
@@ -47,11 +47,9 @@ export function CalendarCell({
       </div>
       <div className="absolute flex flex-col gap-[2px] px-[2px] top-[40px] w-full">
         {events.map((event, index) => {
-          return (
-            <CalendarEvent key={index} event={event} />
-          );
+          return <CalendarEvent key={index} event={event} />;
         })}
-    </div>
+      </div>
     </div>
   );
 }

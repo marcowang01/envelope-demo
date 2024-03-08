@@ -10,8 +10,16 @@ import Trie from "@/lib/trie";
 
 const dictionary = {
   words: [
-    "tetfjvro", "transcript", "trial typefaces", "trip confirmation", 
-    "american", "alexander_liao@outlook.com", "alliance", "all my workspace", "all my brubaker 2024", "all my benefits"
+    "tetfjvro",
+    "transcript",
+    "trial typefaces",
+    "trip confirmation",
+    "american",
+    "alexander_liao@outlook.com",
+    "alliance",
+    "all my workspace",
+    "all my brubaker 2024",
+    "all my benefits",
   ],
 };
 
@@ -54,7 +62,7 @@ export function SearchBar() {
     // var words = value.split(" ");
     var words = [value];
     var trie_prefix = words[words.length - 1].toLowerCase();
-    var found_words = trie.find(trie_prefix)
+    var found_words = trie.find(trie_prefix);
     var first_word = found_words[0];
     if (
       found_words.length !== 0 &&
@@ -73,7 +81,11 @@ export function SearchBar() {
   const handleSubmit = () => {
     if (searchInput.trim().includes("trip")) {
       router.push(`/trip/${searchInput}`);
-    } else if (searchInput.trim().includes("report") || searchInput.trim().includes("newsletter") || searchInput.trim().includes("evans")) {
+    } else if (
+      searchInput.trim().includes("report") ||
+      searchInput.trim().includes("newsletter") ||
+      searchInput.trim().includes("evans")
+    ) {
       router.push(`/newsletter/${searchInput}`);
     } else {
       router.push(`/`);
@@ -94,13 +106,13 @@ export function SearchBar() {
   };
 
   // Filter suggestions based on input
-  const filteredSuggestions = suggestions.filter((suggestion) =>{
+  const filteredSuggestions = suggestions.filter((suggestion) => {
     // look through each of the searchText
     // use map, filter or reduce
     const containsInput = suggestion.searchText.map((searchText) => {
       // return searchText.toLowerCase().includes(searchInput.toLowerCase());
       return searchText.toLowerCase() === searchInput.toLowerCase();
-    })
+    });
 
     return containsInput.includes(true);
   });

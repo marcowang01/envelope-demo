@@ -59,10 +59,6 @@ const config: Config = {
       },
     },
   },
-  safelist: [{
-        pattern: /(bg|text|border)-s2cond(Purple|Pink|Orange|Yellow|Lime|Mint|Test|Test2)/
-    }
-  ],
   plugins: [],
 };
 export default config;

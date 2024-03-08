@@ -255,7 +255,7 @@ export default function Home() {
               !(overType === CardType.Todo || overType === EmailType.Todo)
             }
             titleColorClass={"text-yellow-400"}
-            icon={<PencilIcon className="text-yellow-400"/>}
+            icon={<PencilIcon className="text-yellow-400" />}
           />
           <EmailCard
             card={{ id: CardType.Calendar, title: "Calendar" }}
@@ -280,7 +280,7 @@ export default function Home() {
               )
             }
             titleColorClass={"text-red-400"}
-            icon={<CalendarIcon className="text-red-400"/>}
+            icon={<CalendarIcon className="text-red-400" />}
           />
           <EmailCard
             card={{ id: CardType.Tracking, title: "Tracking" }}
@@ -305,7 +305,7 @@ export default function Home() {
               )
             }
             titleColorClass={"text-blue-500"}
-            icon={<LoadingIcon className="text-blue-400"/>}
+            icon={<LoadingIcon className="text-blue-400" />}
           />
         </div>
         <SeenIconDroppable
@@ -344,7 +344,7 @@ export default function Home() {
                   isOverlay
                 />
               )}
-              {activeEmail &&
+            {activeEmail &&
               (activeEmail.type === EmailType.Calendar ||
                 activeEmail.type === EmailType.Tracking) && (
                 <SimpleRow
