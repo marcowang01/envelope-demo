@@ -127,7 +127,7 @@ export function SearchBar() {
           <input
             type="text"
             placeholder="Ask me anything..."
-            className="bg-transparent border-none w-full placeholder-gray-450 pl-3 focus:outline-none peer text-gray-500 focus:text-gray-500 z-20"
+            className="bg-transparent border-none w-full placeholder-gray-450 pl-3 focus:outline-none peer text-gray-500 focus:text-gray-500 z-20  blur-[4px]"
             value={searchInput}
             onChange={(e) => onChange(e)}
             onKeyDown={handleKeyDown}
