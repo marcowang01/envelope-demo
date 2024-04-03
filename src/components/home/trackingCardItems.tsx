@@ -13,7 +13,7 @@ export function TrackingCardItems({
     // 120 is exactly 3 rows of 40px
     <div
       className={clsx(
-        "flex flex-col justify start mt-[20px] h-[calc((100vh-549px)*0.30)] max-h-[160px] overflow-y-auto",
+        "flex flex-col justify start mt-[20px] h-[calc((100vh-549px)*0.30)] max-h-[160px] overflow-y-auto pl-1",
         {
           "pr-[8px]": trackingItems.length > 3,
         },
