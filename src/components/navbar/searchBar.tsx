@@ -134,7 +134,7 @@ export function SearchBar() {
           />
           {autoComplete && (
             <div className="absolute pl-3 left-[20px] text-gray-450 z-10 flex-row justify-start items-cetner hidden group-focus-within:flex">
-              <div>{autoComplete}</div>
+              <div className=" blur-[4px]">{autoComplete}</div>
               {showTab && (
                 <div className="bg-white border px-[13px] py-[3px] ml-[13px] text-gray-600 border-gray-600 text-[12px] rounded-md">
                   tab
@@ -158,10 +158,10 @@ export function SearchBar() {
                     </div>
                     <div className="flex flex-row justify-between items-center w-full">
                       <div className="flex flex-col">
-                        <div className="text-gray-850 text-[12px]">
+                        <div className="text-gray-850 text-[12px]  blur-[4px]">
                           {suggestion.title}
                         </div>
-                        <div className="text-gray-500 text-[8px]">
+                        <div className="text-gray-500 text-[8px]  blur-[4px]">
                           {suggestion.sender}
                         </div>
                       </div>

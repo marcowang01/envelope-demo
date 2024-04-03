@@ -29,7 +29,7 @@ export function MuseumCard(props: MuseumCardProps) {
           highlightColor={highlightColor}
         />
       </div>
-      <div className="mt-[15px]">
+      <div className="mt-[15px] blur-[4px]">
         <BookingCardLabel
           label="address"
           content={address}

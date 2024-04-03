@@ -52,7 +52,7 @@ export function FlightCard(props: FlightCardProps) {
         />
       </div>
       {/* labels for flight, seat, group */}
-      <div className="flex flex-row justify-between items-center mt-[10px]">
+      <div className="flex flex-row justify-between items-center mt-[10px] blur-[4px]">
         <BookingCardLabel
           label="flight"
           content={flightNumber}
@@ -73,7 +73,7 @@ export function FlightCard(props: FlightCardProps) {
         />
       </div>
       {/* label for passenger */}
-      <div className="mt-[8px]">
+      <div className="mt-[8px] blur-[4px]">
         <BookingCardLabel
           label="passenger"
           content={passengerName}
@@ -82,7 +82,7 @@ export function FlightCard(props: FlightCardProps) {
         />
       </div>
       {/* title for record locator */}
-      <div className="mt-[8px]">
+      <div className="mt-[8px] blur-[4px]">
         <BookingCardTitle
           title="confirmation"
           content={recordLocator}

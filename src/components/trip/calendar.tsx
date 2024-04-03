@@ -23,24 +23,44 @@ export function Calendar() {
   // (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
   const emptyCellsStart = startDay.getDay();
 
+ const totalRows = Math.ceil((emptyCellsStart + days.length) / 7);
+
   return (
     <div className="flex flex-wrap">
       {Array.from({ length: emptyCellsStart }).map((_, index) => (
         <div key={`empty-start-${index}`} className="w-[130px] h-[130px]"></div>
       ))}
-      {days.map((day, index) => {
-        return (
-          <CalendarCell
-            key={index}
-            date={day.toISOString()}
-            // isSelected={activeDay === day.toISOString()}
-            isSelected={false}
-            row={Math.floor(index / 7)}
-            col={index % 7}
-            events={japan[day.toISOString()] || []}
-          />
-        );
-      })}
+{days.map((day, index) => {
+  const totalDays = emptyCellsStart + days.length;
+  const dayIndex = index + emptyCellsStart; // Adjust index by the empty cells at the start
+  const isFirstCol = dayIndex % 7 === 0; // First column (start of the week)
+  const isLastCol = (dayIndex + 1) % 7 === 0; // Last column (end of the week)
+  const isFirstRow = index < 7; // First row in the calendar
+  const isLastRow = index >= totalDays - 7; // Last row in the calendar
+
+  // Use custom CSS or Tailwind's closest approximation
+  let borderClasses = "border";
+  borderClasses += isFirstCol ? "mt-[-0.5px]" : "ml-[-0.5px]"; // Always apply top margin, adjust if Tailwind supports 0.5px
+  // borderClasses += isLastCol ? "border-r " : "border-r "; // Always apply right border, adjust if Tailwind supports 0.5px
+  borderClasses += isFirstRow ? "ml-[-0.5px]" : "mt-[-0.5px]"; // Always apply top border
+  // borderClasses += isLastRow ? "border-b " : "border-b "; // Always apply bottom border
+
+  // Note: Tailwind CSS does not support 0.5px borders directly. You might need to create custom utility classes for this.
+  // As a workaround, this example treats all borders equally for demonstration, but you should adjust according to your project's needs.
+
+  return (
+    <CalendarCell
+      key={index}
+      date={day.toISOString()}
+      style={borderClasses}
+      isSelected={false}
+      row={Math.floor(dayIndex / 7)}
+      col={dayIndex % 7}
+      events={japan[day.toISOString()] || []}
+    />
+  );
+})}
+
     </div>
   );
 }

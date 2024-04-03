@@ -42,7 +42,7 @@ export function RestaurantCard(props: RestaurantCardProps) {
           highlightColor={highlightColor}
         />
       </div>
-      <div className="mt-[8px]">
+      <div className="mt-[8px] blur-[4px]">
         <BookingCardLabel
           label="address"
           content={address}

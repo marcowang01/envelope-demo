@@ -71,7 +71,7 @@ export function EmailRow({
       {...attributes}
       {...listeners}
     >
-      <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]">
+      <div className=" font-bold cursor-pointer group-hover/row:text-gray-800 group-active/row:text-gray-500 w-[85px]   blur-[4px]">
         {sender}
       </div>
       <div
@@ -83,7 +83,7 @@ export function EmailRow({
         )}
       >
         <div
-          className={clsx({
+          className={clsx(" blur-[4px]", {
             grow: !isOverlay,
           })}
         >

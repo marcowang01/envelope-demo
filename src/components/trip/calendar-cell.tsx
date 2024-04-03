@@ -6,12 +6,14 @@ export function CalendarCell({
   date,
   isSelected,
   row,
+  style,
   col,
   events,
 }: {
   date: string;
   isSelected: boolean;
   row: number;
+  style: string;
   col: number;
   events: Event[];
 }) {
@@ -23,11 +25,13 @@ export function CalendarCell({
   return (
     <div
       className={clsx(
-        "group relative w-[130px] h-[130px] rounded-[5px] border border-gray-425 hover:bg-white cursor-pointer",
+        "group relative w-[130px] h-[130px] rounded-[5px] hover:bg-white cursor-pointer",
+        style,
         {
           "bg-white": isSelected,
         },
       )}
+      style={{ border: '0.1px solid #eee' }}
     >
       {dayOfWeek && (
         <div className="absolute top-[10px] left-[10px] text-gray-500 font-light text-[20px]">

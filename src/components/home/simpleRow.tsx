@@ -50,7 +50,7 @@ export function SimpleRow({
       {...attributes}
       {...listeners}
     >
-      <div className="font-normal text-base  text-gray-500">{title}</div>
+      <div className="font-normal text-base  text-gray-500  blur-[4px]">{title}</div>
       <div className="font-light text-xs  text-gray-450 italic">{label}</div>
     </div>
   );
