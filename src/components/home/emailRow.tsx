@@ -58,7 +58,7 @@ export function EmailRow({
     <div
       ref={setNodeRef}
       className={clsx(
-        "group/row italic text-gray-450  flex flex-row font-xl cursor-grab py-[10px] rounded-[10px]",
+        "group/row italic text-gray-450  flex flex-row font-xl cursor-grab py-[10px] rounded-[10px] focus:outline-none",
         gapClass,
         {
           "bg-gray-350 w-fit px-[20px] gap-0 backdrop-blur-sm bg-opacity-50":
